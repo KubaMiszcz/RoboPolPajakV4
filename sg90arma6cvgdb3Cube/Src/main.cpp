@@ -169,7 +169,7 @@ int main(void)
 			ss.SetCCRbyAngle(45);
 			HAL_Delay(delay);
 		//HAL_Delay(delay);
-
+			//asdasdasdasd
 
 
 
