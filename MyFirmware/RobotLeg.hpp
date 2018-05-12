@@ -15,11 +15,12 @@ public:
 	Servo* Servos[NumHingesInLegs];
 	Vector3D CurrentFootPosition;
 	RobotLeg() {
-		for (size_t i = 0; i < NumHingesInLegs; i++)
-		{
-			Servo* s = new Servo;
-			Servos[i] = s;
-		}
+		//todo remove parameterless ctor and make one with all critical parameters
+		//for (size_t i = 0; i < NumHingesInLegs; i++)
+		//{
+		//	Servo* s = new Servo;
+		//	Servos[i] = s;
+		//}
 	};
 	Vector3D GetFootPosition() {
 		//todo:tutaj straightkin

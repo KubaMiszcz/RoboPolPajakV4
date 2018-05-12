@@ -35,24 +35,7 @@ public:
 
 
 	//============================================
-	float CurrentAngle;
 	States State;
-	uint32_t channel;
-	uint16_t minCCR;
-	uint16_t maxCCR;
-	float GetAngle() {
-		return 231;
-	};
-	void SetAngle(float angle) {
-		//todo
-	};
-	void SetDuty() {
-		//todo
-	};
-
-	uint16_t GetDutyValue() {
-		return 121;
-	};
 };
 
 

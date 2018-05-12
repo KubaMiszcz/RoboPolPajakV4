@@ -124,7 +124,13 @@ int main(void)
 	int delay = 500;
 	int a = 6400 - 1550;
 	HAL_Delay(delay);
-	delay = mapToFloat(65, 83, 45, 6400, 5075);
+	a = mapToFloat(65, 83, 45, 6400, 5075);
+	Servo ss = Servo(&TIM1->CCR1);
+	ss.degPos90CCR = 6600;
+	ss.degPos45CCR = 5125;
+	ss.deg0CCR = 3850;
+	ss.degNeg45CCR = 2750;
+	ss.degNeg90CCR = 1650;
 
 	//Robot MyRobot = Robot();
 	//MyRobot.InitMCUPeripherals();
@@ -144,27 +150,17 @@ int main(void)
 		//for (int i = 0; i < 3; i++) {
 		//	duties[i] = mapToLong(potReadings[i], 0, ADC_RESOLUTION, minCCR, maxCCR);
 		//}
+			ss.SetCCRbyAngle(90);
+			HAL_Delay(delay);
+			ss.SetCCRbyAngle(45);
+			HAL_Delay(delay);
+			ss.SetCCRbyAngle(0);
+			HAL_Delay(delay);
+			ss.SetCCRbyAngle(-45);
+			HAL_Delay(delay);
+			ss.SetCCRbyAngle(-90);
+			HAL_Delay(delay);
 
-		duty += dir;
-		if (duty >= maxCCR) {
-			dir = -1;
-			HAL_Delay(delay);
-		}
-		if (duty == plus45CCR) {
-			HAL_Delay(delay);
-		}
-		if (duty == zeroCCR) {
-			HAL_Delay(delay);
-		}
-		if (duty == minus45CCR) {
-			HAL_Delay(delay);
-		}
-		if (duty <= minCCR) {
-			dir = 1;
-			HAL_Delay(delay);
-		}
-		
-		TIM1->CCR1 = duty;
 		//HAL_Delay(delay);
 
 
@@ -284,7 +280,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 		/* User can add his own implementation to report the file name and line number,
 		 tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
 		 /* USER CODE END 6 */
-	}
+}
 #endif /* USE_FULL_ASSERT */
 
 /**
