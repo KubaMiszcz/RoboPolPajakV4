@@ -163,8 +163,9 @@ int main(void)
 			dir = 1;
 			HAL_Delay(delay);
 		}
-		//HAL_Delay(delay);
+		
 		TIM1->CCR1 = duty;
+		//HAL_Delay(delay);
 
 
 
