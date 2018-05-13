@@ -11,16 +11,28 @@
 class RobotLeg {
 public:
 	Vector3D OffsetFromRobotOrigin;
-	float L[NumHingesInLegs];
+	uint16_t Lengths[NumHingesInLegs];
 	Servo* Servos[NumHingesInLegs];
 	Vector3D CurrentFootPosition;
-	RobotLeg() {
-		//todo remove parameterless ctor and make one with all critical parameters
-		//for (size_t i = 0; i < NumHingesInLegs; i++)
-		//{
-		//	Servo* s = new Servo;
-		//	Servos[i] = s;
-		//}
+	//RobotLeg() {
+	//	//todo remove parameterless ctor and make one with all critical parameters
+	//	//for (size_t i = 0; i < NumHingesInLegs; i++)
+	//	//{
+	//	//	Servo* s = new Servo;
+	//	//	Servos[i] = s;
+	//	//}
+	//};
+	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NumHingesInLegs], Servo* servos[NumHingesInLegs])	{
+		OffsetFromRobotOrigin = offsetFromRobotOrigin;
+		for (size_t i = 0; i < NumHingesInLegs; i++)
+		{
+			Lengths[i] = lengths[i];
+		}
+		for (size_t i = 0; i < NumHingesInLegs; i++)
+		{
+			//Servo* s = new Servo;
+			Servos[i] = servos[i];
+		}
 	};
 	Vector3D GetFootPosition() {
 		//todo:tutaj straightkin
@@ -30,12 +42,34 @@ public:
 		//todo:tutaj kininv
 		//todo
 	};
+
 	//=====================================
 
 	States State;
 
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

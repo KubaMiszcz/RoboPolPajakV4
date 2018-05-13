@@ -104,70 +104,74 @@ int main(void)
 
 	/* Initialize all configured peripherals */
 	MX_GPIO_Init();
-	//MX_DMA_Init();
+	MX_DMA_Init();
 	MX_TIM1_Init();
-	//MX_ADC1_Init();
+	MX_ADC1_Init();
 	MX_TIM2_Init();
 	/* USER CODE BEGIN 2 */
-	//HAL_ADC_Start_DMA(&hadc1, (uint32_t*)potReadings, 3);
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)potReadings, 3);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
 
-	int maxCCR = 6400;
-	int plus45CCR = 5075;
-	int zeroCCR = 3680;
-	int minus45CCR = 2375;
-	int minCCR = 1550;
-	int duty = 1551;
-	int dir = 1;
-	int delay = 500;
-	int a = 6400 - 1550;
-	HAL_Delay(delay);
-	a = mapToFloat(65, 83, 45, 6400, 5075);
-	Servo ss = Servo(&TIM1->CCR1);
-	ss.degPos90CCR = 6600;
-	ss.degPos45CCR = 5125;
-	ss.deg0CCR = 3850;
-	ss.degNeg45CCR = 2750;
-	ss.degNeg90CCR = 1650;
 
-	//Robot MyRobot = Robot();
-	//MyRobot.InitMCUPeripherals();
-	//MyRobot.InitProgramProperties();
-	//MyRobot.InitConstructionProperties();
-	//MyRobot.InitConstructionProperties();
+	//debug only variables
+	uint16_t 	delay = 500;
+	int32_t a = 3000;
+	Vector3D vvv;
+	//HAL_Delay(50);
+	mapToFloat(65, 83, 45, 6400, 5075);
+
+	//generateLeg
+	//RobotLeg(Vector3D offsetFromRobotOrigin,float lengths[NumHingesInLegs], Servo* servos[NumHingesInLegs])
+
+	Vector3D offsetFromOrigin;
+	offsetFromOrigin = Vector3D(2, 6, 10);
+	
+	uint16_t lengths[NumHingesInLegs] = { 20,50,100 };
+	
+	uint16_t characteristicCCRs1[5] = { 7894,5930,4550,3340,2094 };
+	Servo servo1 = Servo(&htim1.Instance->CCR1, characteristicCCRs1);
+
+	uint16_t characteristicCCRs2[5] = { 6600,5125,3850,2750,1650 };
+	Servo servo2 = Servo(&htim1.Instance->CCR2, characteristicCCRs2);
+
+	uint16_t characteristicCCRs3[5] = { 7121,5325,3975,2825,1678 };
+	Servo servo3 = Servo(&htim1.Instance->CCR3, characteristicCCRs3);
+
+	Servo* servos[NumHingesInLegs] = { &servo1, &servo2, &servo3 };
+
+	RobotLeg rl = RobotLeg(offsetFromOrigin, lengths, servos);
+	vvv=rl.GetFootPosition();
+
+		//Servo ss = Servo(&TIM1->CCR1);
+		//ss.degPos90CCR = 6600;
+		//ss.degPos45CCR = 5125;
+		//ss.deg0CCR = 3850;
+		//ss.degNeg45CCR = 2750;
+		//ss.degNeg90CCR = 1650;
+
+		//Robot MyRobot = Robot();
+		//MyRobot.InitMCUPeripherals();
+		//MyRobot.InitProgramProperties();
+		//MyRobot.InitConstructionProperties();
+		//MyRobot.InitConstructionProperties();
 
 
-	/* USER CODE END 2 */
+		/* USER CODE END 2 */
 
-	/* Infinite loop */
-	/* USER CODE BEGIN WHILE */
+		/* Infinite loop */
+		/* USER CODE BEGIN WHILE */
 	while (1) {
-		HAL_GetTick();
-
 		tick = HAL_GetTick();
-		//for (int i = 0; i < 3; i++) {
-		//	duties[i] = mapToLong(potReadings[i], 0, ADC_RESOLUTION, minCCR, maxCCR);
-		//}
-			ss.SetCCRbyAngle(90);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(45);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(0);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(-90);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay); 
-			ss.SetCCRbyAngle(0);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(45);
-			HAL_Delay(delay);
+
+		for (int i = 0; i < NumHingesInLegs; i++) {
+			rl.Servos[i]->SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -90, 90));
+		}
+			//ss.SetCCRbyAngle(90);
+		//*ss.ptrCCR = a;
+		//HAL_Delay(delay);
+
 		//HAL_Delay(delay);
 			//asdasdasdasd
 
