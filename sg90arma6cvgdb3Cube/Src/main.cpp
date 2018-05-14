@@ -61,6 +61,9 @@
 uint16_t potReadings[3];
 uint16_t duties[3];
 
+//!++Debug Only
+float_t ThetaAngles[NUM_HINGES_IN_LEGS];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,64 +126,88 @@ int main(void)
 	mapToFloat(65, 83, 45, 6400, 5075);
 
 	//generateLeg
-	//RobotLeg(Vector3D offsetFromRobotOrigin,float lengths[NumHingesInLegs], Servo* servos[NumHingesInLegs])
+	//RobotLeg(Vector3D offsetFromRobotOrigin,float lengths[NUM_HINGES_IN_LEGS], Servo* servos[NUM_HINGES_IN_LEGS])
 
 	Vector3D offsetFromOrigin;
-	offsetFromOrigin = Vector3D(2, 6, 10);
-	
-	uint16_t lengths[NumHingesInLegs] = { 20,50,100 };
-	
+	offsetFromOrigin = Vector3D(0, 0, 0);
+
+	uint16_t lengths[NUM_HINGES_IN_LEGS] = { 32,65,106 };
+
 	uint16_t characteristicCCRs1[5] = { 7894,5930,4550,3340,2094 };
 	Servo servo1 = Servo(&htim1.Instance->CCR1, characteristicCCRs1);
 
 	uint16_t characteristicCCRs2[5] = { 6600,5125,3850,2750,1650 };
 	Servo servo2 = Servo(&htim1.Instance->CCR2, characteristicCCRs2);
 
-	uint16_t characteristicCCRs3[5] = { 7121,5325,3975,2825,1678 };
+	uint16_t characteristicCCRs3[5] = { 1678,2825,3975,5325,7121 };
 	Servo servo3 = Servo(&htim1.Instance->CCR3, characteristicCCRs3);
 
-	Servo* servos[NumHingesInLegs] = { &servo1, &servo2, &servo3 };
+	Servo* servos[NUM_HINGES_IN_LEGS] = { &servo1, &servo2, &servo3 };
 
 	RobotLeg rl = RobotLeg(offsetFromOrigin, lengths, servos);
-	vvv=rl.GetFootPosition();
+	vvv = rl.GetFootPosition();
 
-		//Servo ss = Servo(&TIM1->CCR1);
-		//ss.degPos90CCR = 6600;
-		//ss.degPos45CCR = 5125;
-		//ss.deg0CCR = 3850;
-		//ss.degNeg45CCR = 2750;
-		//ss.degNeg90CCR = 1650;
+	//Servo ss = Servo(&TIM1->CCR1);
+	//ss.degPos90CCR = 6600;
+	//ss.degPos45CCR = 5125;
+	//ss.deg0CCR = 3850;
+	//ss.degNeg45CCR = 2750;
+	//ss.degNeg90CCR = 1650;
 
-		//Robot MyRobot = Robot();
-		//MyRobot.InitMCUPeripherals();
-		//MyRobot.InitProgramProperties();
-		//MyRobot.InitConstructionProperties();
-		//MyRobot.InitConstructionProperties();
+	//Robot MyRobot = Robot();
+	//MyRobot.InitMCUPeripherals();
+	//MyRobot.InitProgramProperties();
+	//MyRobot.InitConstructionProperties();
+	//MyRobot.InitConstructionProperties();
+	Vector3D testAngles = Vector3D(150, 0, 0);
+	Vector3D dest = Vector3D(150, 0, 0);
+	Vector3D minBoundaries = Vector3D(0, -150, -150);
+	Vector3D maxBoundaries = Vector3D(200, 150, 150);
 
+	/* USER CODE END 2 */
 
-		/* USER CODE END 2 */
-
-		/* Infinite loop */
-		/* USER CODE BEGIN WHILE */
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
 	while (1) {
 		tick = HAL_GetTick();
 
-		for (int i = 0; i < NumHingesInLegs; i++) {
-			rl.Servos[i]->SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -90, 90));
+		///manual test inverse kinematic with potentiometers
+		dest.X = mapToLong(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
+		dest.Y = mapToLong(potReadings[1], 0, ADC_RESOLUTION, minBoundaries.Y, maxBoundaries.Y);
+		dest.Z = mapToLong(potReadings[2], 0, ADC_RESOLUTION, minBoundaries.Z, maxBoundaries.Z);
+		rl.SetPosition(dest);
+
+		for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+			ThetaAngles[i] = rl.Servos[i]->theta;
 		}
-			//ss.SetCCRbyAngle(90);
-		//*ss.ptrCCR = a;
+
+		
+		//HAL_Delay(500);
+		//dest.X = 200;
+		//rl.SetPosition(dest);
+		//HAL_Delay(500);
+		//dest.X = 150;
+		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+		//	rl.Servos[i]->SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -90, 90));
+		//}
+
+
+		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+		//	rl.Servos[i]->SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -90, 90));
+		//}
+
+
+		//ss.SetCCRbyAngle(90);
 		//HAL_Delay(delay);
 
-		//HAL_Delay(delay);
-			//asdasdasdasd
+
+		///manual test straight kinematic, servos ccr boundaries etc
+		//rl.Servos[0]->SetCCRValuebyAngle(testAngles.X);
+		//rl.Servos[1]->SetCCRValuebyAngle(testAngles.Y);
+		//rl.Servos[2]->SetCCRValuebyAngle(testAngles.Z);
 
 
 
-		//*s1.CCR = duties[0];
-		//TIM1->CCR1 = duties[0];
-		//TIM1->CCR2 = duties[1];
-		//TIM1->CCR3 = duties[2];
 
 		/* USER CODE END WHILE */
 
