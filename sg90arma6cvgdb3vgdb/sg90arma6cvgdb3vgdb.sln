@@ -1,20 +1,20 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sg90arma6cvgdb3vgdb", "sg90arma6cvgdb3vgdb\sg90arma6cvgdb3vgdb.vcxproj", "{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
+		DebugWithOptimizationO3|x86 = DebugWithOptimizationO3|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.Debug|x64.ActiveCfg = Debug|Win32
 		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.Debug|x86.ActiveCfg = Debug|Win32
 		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.Debug|x86.Build.0 = Debug|Win32
-		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.Release|x64.ActiveCfg = Release|Win32
+		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.DebugWithOptimizationO3|x86.ActiveCfg = DebugWithOptimizationO3|Win32
+		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.DebugWithOptimizationO3|x86.Build.0 = DebugWithOptimizationO3|Win32
 		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.Release|x86.ActiveCfg = Release|Win32
 		{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
