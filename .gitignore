@@ -1,9 +1,9 @@
 ## VGDB ignore
 sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/Debug/
 sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/DebugWithOptimizationO3/
-#sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/
+sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/
 sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/*
-#sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/sg90arma6cvgdb3vgdb-Debug/MemoryUtilizationReport.xml
+sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/sg90arma6cvgdb3vgdb-Debug/MemoryUtilizationReport.xml
 
 
 ## Ignore Visual Studio temporary files, build results, and
