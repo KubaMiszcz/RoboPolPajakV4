@@ -1,8 +1,8 @@
 ## VGDB ignore
-sg90arma6cvgdb3vgdb/CodeDB/
-sg90arma6cvgdb3vgdb/Debug/
-sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/Debug/
-sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/
+sg90arma6cvgdb3vgdb/CodeDB/*.*
+sg90arma6cvgdb3vgdb/Debug/*.*
+sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/Debug/*.*
+sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/*.*
 
 
 ## Ignore Visual Studio temporary files, build results, and
