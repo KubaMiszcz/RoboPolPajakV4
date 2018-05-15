@@ -13,7 +13,7 @@ public:
 	Vector3D OffsetVectorFromRobotOrigin;
 	float_t OffsetAngleFromRobotOrigin_RAD;
 	uint16_t Length[NUM_HINGES_IN_LEGS];
-	Servo* Servos[NUM_HINGES_IN_LEGS];
+	Servo Servos[NUM_HINGES_IN_LEGS];
 	Vector3D CurrentFootPosition;
 private:
 	uint32_t Length1Square;
@@ -23,32 +23,20 @@ private:
 	float_t Theta_DEG[3];
 
 
-	//RobotLeg() {
-	//	//todo remove parameterless ctor and make one with all critical parameters
-	//	//for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
-	//	//{
-	//	//	Servo* s = new Servo;
-	//	//	Servos[i] = s;
-	//	//}
-	//};
 public:
-	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEGS], Servo* servos[NUM_HINGES_IN_LEGS]) {
+	RobotLeg() {};
+
+	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEGS], Servo servos[NUM_HINGES_IN_LEGS]) {
 		OffsetVectorFromRobotOrigin = offsetFromRobotOrigin;
 		OffsetAngleFromRobotOrigin_RAD = myAtan2(OffsetVectorFromRobotOrigin.Y, OffsetVectorFromRobotOrigin.X);
 
 		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
 		{
 			Length[i] = lengths[i];
+			Servos[i] = servos[i];
 		}
 		Length1Square = myPowToSecond(Length[1], 2);
 		Length2Square = myPowToSecond(Length[2], 2);
-
-		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
-		{
-			//Servo* s = new Servo;
-			Servos[i] = servos[i];
-		}
-
 	};
 
 	Vector3D GetFootPosition() {
@@ -88,8 +76,8 @@ public:
 		
 		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
 		{
-			Servos[i]->SetCCRValuebyAngle(ToDegrees(Theta_RAD[i]));
-			Servos[i]->theta = ToDegrees(Theta_RAD[i]);
+			Servos[i].SetCCRValuebyAngle(ToDegrees(Theta_RAD[i]));
+			Servos[i].theta = ToDegrees(Theta_RAD[i]);
 			Theta_DEG[i] = ToDegrees(Theta_RAD[i]);
 		}
 
@@ -98,7 +86,7 @@ public:
 
 	//=====================================
 
-	States State;
+	EnumStates State;
 
 
 };
@@ -137,7 +125,7 @@ public:
 typedef struct {
 	float X_offsetFromRobotOrigin;
 	float Y_offsetFromRobotOrigin;
-	States State;
+	EnumStates State;
 	float L1;
 	float L2;
 	float L3;

@@ -20,7 +20,8 @@ public:
 	//?debug Only
 	float_t theta;
 	
-	//Servo() {};
+	Servo() {};
+
 	Servo(volatile uint32_t* ccr, uint16_t characteristicCCRs[5]) { 
 		ptrCCR = ccr; 
 		degPos90CCR = characteristicCCRs[0];
@@ -53,7 +54,7 @@ public:
 
 
 	//============================================
-	States State;
+	EnumStates State;
 };
 
 
@@ -73,7 +74,7 @@ typedef uint16_t(*Get_uint16_t_value)(uint32_t*);
 
 typedef struct {
 float CurrentAngle;
-States State;
+EnumStates State;
 uint32_t* pDutyCCR;
 //============================================
 TIM_HandleTypeDef* tim;

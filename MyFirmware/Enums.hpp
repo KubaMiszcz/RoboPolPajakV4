@@ -6,7 +6,7 @@
  */
 #pragma once
 
-enum class States {
+enum class EnumStates {
 	IsInDestination, IsMoving
 };
 
@@ -17,6 +17,6 @@ enum class MyEnumClass
 
 //typedef enum {
 //	IsInDestination, IsMoving
-//} States;
+//} EnumStates;
 
 

@@ -4,11 +4,11 @@ class Robot
 {
 public:
 	Vector3D CurrentPosition;
-	RobotLeg* FrontLeftLeg;
-	RobotLeg* FrontRightLeg;
-	RobotLeg* RearLeftLeg;
-	RobotLeg* RearRightLeg;
-	RobotLeg* AllLegs[4];
+	RobotLeg FrontLeftLeg;
+	RobotLeg FrontRightLeg;
+	RobotLeg RearLeftLeg;
+	RobotLeg RearRightLeg;
+	RobotLeg AllLegs[4];
 
 	//=============
 	uint16_t potReadings[3];
@@ -59,10 +59,10 @@ public:
 
 	void InitConstructionProperties() {
 		float_t arr[3] = { 1,2,3 };
-		FrontLeftLeg->Length[0] = 10;
-		FrontLeftLeg->Length[1] = 50;
-		FrontLeftLeg->Length[2] = 100;
-		FrontLeftLeg->GetFootPosition();
+		FrontLeftLeg.Length[0] = 10;
+		FrontLeftLeg.Length[1] = 50;
+		FrontLeftLeg.Length[2] = 100;
+		FrontLeftLeg.GetFootPosition();
 	};
 
 };

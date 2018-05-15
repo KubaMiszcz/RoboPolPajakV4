@@ -142,7 +142,7 @@ int main(void)
 	uint16_t characteristicCCRs3[5] = { 1678,2825,3975,5325,7121 };
 	Servo servo3 = Servo(&htim1.Instance->CCR3, characteristicCCRs3);
 
-	Servo* servos[NUM_HINGES_IN_LEGS] = { &servo1, &servo2, &servo3 };
+	Servo servos[NUM_HINGES_IN_LEGS] = { servo1, servo2, servo3 };
 
 	RobotLeg rl = RobotLeg(offsetFromOrigin, lengths, servos);
 	vvv = rl.GetFootPosition();
@@ -178,7 +178,7 @@ int main(void)
 		rl.SetPosition(dest);
 
 		for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
-			ThetaAngles[i] = rl.Servos[i]->theta;
+			ThetaAngles[i] = rl.Servos[i].theta;
 		}
 
 		
