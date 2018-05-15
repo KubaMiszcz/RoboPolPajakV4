@@ -1,3 +1,3 @@
 copy Src\main.cpp Src\main.cppbackup
-copy Src\main.c Src\main.cpp
+copy Src\main.cpp Src\main.c
 pause

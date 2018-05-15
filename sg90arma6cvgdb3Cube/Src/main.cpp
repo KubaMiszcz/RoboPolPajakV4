@@ -178,7 +178,7 @@ int main(void)
 		dest.X = mapToLong(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
 		dest.Y = mapToLong(potReadings[1], 0, ADC_RESOLUTION, minBoundaries.Y, maxBoundaries.Y);
 		dest.Z = mapToLong(potReadings[2], 0, ADC_RESOLUTION, minBoundaries.Z, maxBoundaries.Z);
-		//MyRobot.FrontLeftLeg.SetPosition(dest);
+		MyRobot.FrontLeftLeg.SetPosition(dest);
 
 		for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
 			ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
