@@ -32,8 +32,7 @@ public:
 	};
 	void InitRobotProperties() {
 		//FrontLeftLeg = new RobotLeg();
-	}
-
+	};
 
 	void InitProgramProperties() {
 		//FrontLeftLeg = new RobotLeg;
@@ -57,11 +56,12 @@ public:
 		FrontRightLeg->Servos[2]->ptrCCR = &htim2.Instance->CCR3;*/
 		
 	};
+
 	void InitConstructionProperties() {
-		float arr[3] = { 1,2,3 };
-		FrontLeftLeg->Lengths[0] = 10;
-		FrontLeftLeg->Lengths[1] = 50;
-		FrontLeftLeg->Lengths[2] = 100;
+		float_t arr[3] = { 1,2,3 };
+		FrontLeftLeg->Length[0] = 10;
+		FrontLeftLeg->Length[1] = 50;
+		FrontLeftLeg->Length[2] = 100;
 		FrontLeftLeg->GetFootPosition();
 	};
 

@@ -16,6 +16,9 @@ public:
 	uint16_t degNeg45CCR;
 	uint16_t degNeg90CCR;
 	volatile uint32_t* ptrCCR;
+
+	//?debug Only
+	float_t theta;
 	
 	//Servo() {};
 	Servo(volatile uint32_t* ccr, uint16_t characteristicCCRs[5]) { 
@@ -27,21 +30,25 @@ public:
 		degNeg90CCR = characteristicCCRs[4];	
 		*ptrCCR = deg0CCR;
 	};
-	void SetCCRValuebyAngle(float angle) {
+
+	void SetCCRValuebyAngle(float_t angle) {
 		if (angle >= 0)
 		{
-			if (angle > 45) *ptrCCR = mapAngleToCCR(angle, 45, 90, degPos45CCR, degPos90CCR);
+			if (angle >=90) *ptrCCR = degPos90CCR;
+			else if (angle > 45) *ptrCCR = mapAngleToCCR(angle, 45, 90, degPos45CCR, degPos90CCR);
 			else *ptrCCR = mapAngleToCCR(angle, 0, 45, deg0CCR, degPos45CCR);
 		}
 		if (angle < 0)
 		{
+			if (angle <= -90) *ptrCCR = degNeg90CCR;
 			if (angle < -45) *ptrCCR = mapAngleToCCR(angle, -45, -90, degNeg45CCR, degNeg90CCR);
 			else *ptrCCR = mapAngleToCCR(angle, 0, -45, deg0CCR, degNeg45CCR);
 		}
 	};
+
 	uint16_t GetCCRValue() {
 		return *ptrCCR;
-	}
+	};
 
 
 

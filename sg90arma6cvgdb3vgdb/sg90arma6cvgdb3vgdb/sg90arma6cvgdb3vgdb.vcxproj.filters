@@ -344,10 +344,10 @@
     <ClInclude Include="..\..\MyFirmware\GlobalConstants.hpp">
       <Filter>MyFirmware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyFirmware\MyIncludes.hpp">
+    <ClInclude Include="..\..\MyFirmware\Robot.hpp">
       <Filter>MyFirmware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\MyFirmware\Robot.hpp">
+    <ClInclude Include="..\..\MyFirmware\MyIncludes.hpp">
       <Filter>MyFirmware</Filter>
     </ClInclude>
   </ItemGroup>
