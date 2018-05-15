@@ -19,6 +19,10 @@ private:
 	uint32_t Length1Square;
 	uint32_t Length2Square;
 
+	//debug only
+	float_t Theta_DEG[3];
+
+
 	//RobotLeg() {
 	//	//todo remove parameterless ctor and make one with all critical parameters
 	//	//for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
@@ -66,7 +70,7 @@ public:
 		Vector3D destFromOriginS2 = dest.Subtract(originS2);
 
 		float_t magnitudeOriginS2toDest = sqrt(myPowToSecond(destFromOriginS2.X, 2) + myPowToSecond(destFromOriginS2.Y, 2));
-		if (magnitudeOriginS2toDest > sqrt(Length1Square + Length2Square))
+		if (magnitudeOriginS2toDest > Length[1] + Length[2])
 			return;
 
 		//(locX^2 + locY^2 + locZ^2 - L1^2 - L2^2) / 	(2* L1 * L2)
@@ -86,6 +90,7 @@ public:
 		{
 			Servos[i]->SetCCRValuebyAngle(ToDegrees(Theta_RAD[i]));
 			Servos[i]->theta = ToDegrees(Theta_RAD[i]);
+			Theta_DEG[i] = ToDegrees(Theta_RAD[i]);
 		}
 
 		CurrentFootPosition = dest;
