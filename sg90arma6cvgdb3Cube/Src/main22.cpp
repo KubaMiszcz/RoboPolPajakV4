@@ -1,1 +1,0 @@
-D:/STM32_Workspace/sg90arma6cvgdb3/sg90arma6cvgdb3Cube/Src/main.c

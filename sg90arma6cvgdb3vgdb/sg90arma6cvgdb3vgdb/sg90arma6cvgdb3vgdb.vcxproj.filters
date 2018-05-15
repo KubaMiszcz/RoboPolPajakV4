@@ -350,6 +350,9 @@
     <ClInclude Include="..\..\MyFirmware\MyIncludes.hpp">
       <Filter>MyFirmware</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\i2c.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\adc.c">
@@ -552,6 +555,9 @@
     </ClCompile>
     <ClCompile Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_utils.c">
       <Filter>Source files\Device-specific files\HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\i2c.c">
+      <Filter>Source files\Src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

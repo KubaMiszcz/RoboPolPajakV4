@@ -92,6 +92,7 @@
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\adc.h" />
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\dma.h" />
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\gpio.h" />
+    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\i2c.h" />
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\main.h" />
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\stm32f1xx_hal_conf.h" />
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\stm32f1xx_it.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\adc.c" />
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\dma.c" />
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\gpio.c" />
+    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\i2c.c" />
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\main.cpp" />
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_hal_msp.c" />
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_it.c" />
