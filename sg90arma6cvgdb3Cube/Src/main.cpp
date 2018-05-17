@@ -166,37 +166,30 @@ int main(void)
 	Vector3D vvv;
 	vvv = rl.GetFootPosition();
 
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1) {
 		tick = HAL_GetTick();
-
 		///manual test inverse kinematic with potentiometers
-		dest.X = mapToLong(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
-		dest.Y = mapToLong(potReadings[1], 0, ADC_RESOLUTION, minBoundaries.Y, maxBoundaries.Y);
-		dest.Z = mapToLong(potReadings[2], 0, ADC_RESOLUTION, minBoundaries.Z, maxBoundaries.Z);
-		MyRobot.FrontLeftLeg.SetPosition(dest);
+		//dest.X = mapToLong(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
+		//dest.Y = mapToLong(potReadings[1], 0, ADC_RESOLUTION, minBoundaries.Y, maxBoundaries.Y);
+		//dest.Z = mapToLong(potReadings[2], 0, ADC_RESOLUTION, minBoundaries.Z, maxBoundaries.Z);
+		//MyRobot.FrontLeftLeg.SetPosition(dest);
 
-		for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
-			ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
-		}
+		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+		//	ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
+		//}
 
 		
-		//HAL_Delay(500);
 		//dest.X = 200;
 		//rl.SetPosition(dest);
 		//HAL_Delay(500);
 		//dest.X = 150;
-		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
-		//	rl.Servos[i]->SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -90, 90));
-		//}
-
 
 		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
-		//	rl.Servos[i]->SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -90, 90));
+		//	rl.Servos[i].SetCCRValuebyAngle(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -120, 120));
 		//}
 
 
