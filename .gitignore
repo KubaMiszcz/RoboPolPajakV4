@@ -1,4 +1,5 @@
 ## VGDB ignore
+no-git/
 sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/Debug/
 sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/DebugWithOptimizationO3/
 sg90arma6cvgdb3vgdb/sg90arma6cvgdb3vgdb/VisualGDBCache/
