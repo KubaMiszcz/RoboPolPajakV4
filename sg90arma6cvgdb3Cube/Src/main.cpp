@@ -121,16 +121,13 @@ int main(void)
 	int minCCR = 1550;
 	int duty = 1551;
 	int dir = 1;
-	int delay = 500;
+	int delay1 = 500;
+	int delay2 = 500;
 	int a = 6400 - 1550;
-	HAL_Delay(delay);
+	HAL_Delay(delay1);
 	a = mapToFloat(65, 83, 45, 6400, 5075);
 	Servo ss = Servo(&TIM1->CCR1);
-	ss.degPos90CCR = 6600;
-	ss.degPos45CCR = 5125;
-	ss.deg0CCR = 3850;
-	ss.degNeg45CCR = 2750;
-	ss.degNeg90CCR = 1650;
+	uint16_t CCRs[5] = {5000,4000,3000,2000,1500};
 
 	//Robot MyRobot = Robot();
 	//MyRobot.InitMCUPeripherals();
@@ -144,31 +141,32 @@ int main(void)
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		HAL_GetTick();
-
+		ss.degPos90CCR = CCRs[0];
+		ss.degPos45CCR = CCRs[1];
+		ss.deg0CCR = CCRs[2];
+		ss.degNeg45CCR = CCRs[3];
+		ss.degNeg90CCR = CCRs[4];
 		tick = HAL_GetTick();
 		//for (int i = 0; i < 3; i++) {
 		//	duties[i] = mapToLong(potReadings[i], 0, ADC_RESOLUTION, minCCR, maxCCR);
 		//}
 			ss.SetCCRbyAngle(90);
-			HAL_Delay(delay);
+			HAL_Delay(delay1+delay2);
 			ss.SetCCRbyAngle(45);
-			HAL_Delay(delay);
+			HAL_Delay(delay1);
 			ss.SetCCRbyAngle(0);
-			HAL_Delay(delay);
+			HAL_Delay(delay1);
 			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay);
+			HAL_Delay(delay1);
 			ss.SetCCRbyAngle(-90);
-			HAL_Delay(delay);
+			HAL_Delay(delay1+delay2);
 			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay);
-			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay); 
+			HAL_Delay(delay1); 
 			ss.SetCCRbyAngle(0);
-			HAL_Delay(delay);
+			HAL_Delay(delay1);
 			ss.SetCCRbyAngle(45);
-			HAL_Delay(delay);
-		//HAL_Delay(delay);
+			HAL_Delay(delay1);
+		//HAL_Delay(delay1);
 
 
 
