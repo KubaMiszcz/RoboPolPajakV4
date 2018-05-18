@@ -35,7 +35,9 @@ wszytskie pozycje lokalnego UCS robota względem Poczatku trasy!!! bo brak GPS
 ### class enum States
 * ismoving
 * isindestination
-*
+
+### class Pose
+* Vector3d[4]
 
 ### class vector3d
 * nazwy params in magnityde beginpt endpt
