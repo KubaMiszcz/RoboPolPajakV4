@@ -53,14 +53,12 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-//#################################################################################
-//####################  Private variables    ######################################
-//#################################################################################
-//static const uint16_t minCCR = 0;
-//static const uint16_t maxCCR = 10000;
-uint16_t potReadings[3];
-uint16_t duties[3];
+int delay1 = 500;
+int delay2 = 500;
+uint32_t dir = -1;
 
+Servo ss = Servo(&TIM1->CCR1);
+uint16_t CCRs[5] = { 7300,6000,4650,3300,1500 };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,98 +97,66 @@ int main(void)
 	SystemClock_Config();
 
 	/* USER CODE BEGIN SysInit */
-		//HAL_Delay(50);
+
 	/* USER CODE END SysInit */
 
 	/* Initialize all configured peripherals */
 	MX_GPIO_Init();
-	//MX_DMA_Init();
+	MX_DMA_Init();
 	MX_TIM1_Init();
-	//MX_ADC1_Init();
+	MX_ADC1_Init();
 	MX_TIM2_Init();
 	/* USER CODE BEGIN 2 */
-	//HAL_ADC_Start_DMA(&hadc1, (uint32_t*)potReadings, 3);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-
-	int maxCCR = 6400;
-	int plus45CCR = 5075;
-	int zeroCCR = 3680;
-	int minus45CCR = 2375;
-	int minCCR = 1550;
-	int duty = 1551;
-	int dir = 1;
-	int delay1 = 500;
-	int delay2 = 500;
-	int a = 6400 - 1550;
 	HAL_Delay(delay1);
-	a = mapToFloat(65, 83, 45, 6400, 5075);
-	Servo ss = Servo(&TIM1->CCR1);
-	uint16_t CCRs[5] = {5000,4000,3000,2000,1500};
-
-	//Robot MyRobot = Robot();
-	//MyRobot.InitMCUPeripherals();
-	//MyRobot.InitProgramProperties();
-	//MyRobot.InitConstructionProperties();
-	//MyRobot.InitConstructionProperties();
-
 
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		ss.degPos90CCR = CCRs[0];
-		ss.degPos45CCR = CCRs[1];
-		ss.deg0CCR = CCRs[2];
-		ss.degNeg45CCR = CCRs[3];
-		ss.degNeg90CCR = CCRs[4];
 		tick = HAL_GetTick();
-		//for (int i = 0; i < 3; i++) {
-		//	duties[i] = mapToLong(potReadings[i], 0, ADC_RESOLUTION, minCCR, maxCCR);
-		//}
-			ss.SetCCRbyAngle(90);
-			HAL_Delay(delay1+delay2);
-			ss.SetCCRbyAngle(45);
-			HAL_Delay(delay1);
-			ss.SetCCRbyAngle(0);
-			HAL_Delay(delay1);
-			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay1);
-			ss.SetCCRbyAngle(-90);
-			HAL_Delay(delay1+delay2);
-			ss.SetCCRbyAngle(-45);
-			HAL_Delay(delay1); 
-			ss.SetCCRbyAngle(0);
-			HAL_Delay(delay1);
-			ss.SetCCRbyAngle(45);
-			HAL_Delay(delay1);
-		//HAL_Delay(delay1);
 
+		ss.degPos90CCR = CCRs[0];
+		ss.SetCCRbyAngle(90);
+		HAL_Delay(delay1 + delay2);
 
+		ss.degPos45CCR = CCRs[1];
+		ss.SetCCRbyAngle(45);
+		HAL_Delay(delay1);
 
+		ss.deg0CCR = CCRs[2];
+		ss.SetCCRbyAngle(0);
+		HAL_Delay(delay1);
 
-		//*s1.CCR = duties[0];
-		//TIM1->CCR1 = duties[0];
-		//TIM1->CCR2 = duties[1];
-		//TIM1->CCR3 = duties[2];
+		ss.degNeg45CCR = CCRs[3];
+		ss.SetCCRbyAngle(-45);
+		HAL_Delay(delay1);
+
+		ss.degNeg90CCR = CCRs[4];
+		ss.SetCCRbyAngle(-90);
+		HAL_Delay(delay1 + delay2);
+
+		ss.degNeg45CCR = CCRs[3];
+		ss.SetCCRbyAngle(-45);
+		HAL_Delay(delay1);
+
+		ss.deg0CCR = CCRs[2];
+		ss.SetCCRbyAngle(0);
+		HAL_Delay(delay1);
+
+		ss.degPos45CCR = CCRs[1];
+		ss.SetCCRbyAngle(45);
+		HAL_Delay(delay1);
 
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
 
 	}
-	/*
-	 //HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_1, (uint32_t*)&duties[0], 1);
-	 //HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_2, (uint32_t*)&duties+4, 1);
-	 //HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_3, (uint32_t*)&duties+8, 1);
-	 //HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
-	 //HAL_Delay(100);
-	 //HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
-	 //HAL_Delay(100);
-	 */
-	 /* USER CODE END 3 */
+	/* USER CODE END 3 */
 
 }
 
