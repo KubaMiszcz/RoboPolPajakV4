@@ -2,15 +2,15 @@
 class Vector3D
 {
 public:
-	int16_t X;
-	int16_t Y;
-	int16_t Z;
+	float_t X;
+	float_t Y;
+	float_t Z;
 
 	Vector3D() {
 		X = 0; 		Y = 0; 		Z = 0;
 	};
 
-	Vector3D(int16_t x, int16_t y, int16_t z = 0) {
+	Vector3D(float_t x, float_t y, float_t z = 0) {
 		X = x;		Y = y;		Z = z;
 	};
 

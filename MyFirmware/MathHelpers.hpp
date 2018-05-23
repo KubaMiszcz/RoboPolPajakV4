@@ -18,18 +18,16 @@
    * @retval None
    */
 
-//! ORDER DEFINITIONS HERE IS IMPORTANT
+   //! ORDER DEFINITIONS HERE IS IMPORTANT
 
-///dasdsa
-///@param
-static long mapToLong(long x, long fromLow, long fromHigh, long toLow, long toHigh)
-{
-  return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
-};
+//static long mapToLong(long x, long fromLow, long fromHigh, long toLow, long toHigh)
+//{
+//	return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
+//};
 
 static float_t mapToFloat(float_t x, float_t fromLow, float_t fromHigh, float_t toLow, float_t toHigh)
 {
-  return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
+	return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
 };
 
 static uint16_t mapAngleToCCR(float_t x, int8_t fromLow, int8_t fromHigh, uint16_t toLow, uint16_t toHigh)
@@ -37,18 +35,26 @@ static uint16_t mapAngleToCCR(float_t x, int8_t fromLow, int8_t fromHigh, uint16
 	return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
 };
 
-static float_t myAtan2(float_t y, float_t x)
-{
-	return (float_t)atan2((double)y, (double)x);
-}; 
+//static float_t myAtan2(float_t y, float_t x)
+//{
+//	return (float_t)atan2((double)y, (double)x);
+//};
 
 float_t ToDegrees(float_t rad) {
 	return rad*TO_DEGREES;
 };
 
-static float_t myPowToSecond(int32_t y, int32_t x)
+//static float_t mySquare(int32_t y, int32_t x)
+//{
+//	return (float_t)pow((double)y, (double)x);
+//};
+
+///<summary> 
+///closed on min side, open on max
+///</summary>
+static bool IsInRange(int32_t val, int32_t min, int32_t max)
 {
-	return (float_t)pow((double)y, (double)x);
+	return (val < max && val >= min) ? true : false;
 };
 
 

@@ -6,7 +6,7 @@
  */
 
 #pragma once
-#include "Enums.hpp"
+//#include "Enums.hpp"
 
 class Servo {
 public:
@@ -19,23 +19,49 @@ public:
 
 	//?debug Only
 	float_t theta;
-	
+
 	Servo() {};
 
-	Servo(volatile uint32_t* ccr, uint16_t characteristicCCRs[5]) { 
-		ptrCCR = ccr; 
+	Servo(volatile uint32_t* ccr, uint16_t characteristicCCRs[5]) {
+		ptrCCR = ccr;
 		degPos90CCR = characteristicCCRs[0];
 		degPos45CCR = characteristicCCRs[1];
 		deg0CCR = characteristicCCRs[2];
 		degNeg45CCR = characteristicCCRs[3];
-		degNeg90CCR = characteristicCCRs[4];	
+		degNeg90CCR = characteristicCCRs[4];
 		*ptrCCR = deg0CCR;
 	};
 
-	void SetCCRValuebyAngle(float_t angle) {
+	void SetCCRValueByAngle_RAD(float_t angle_RAD) {
+
+		if (angle_RAD >= 0)
+		{
+			if (angle_RAD >= M_PI_2) *ptrCCR = degPos90CCR;
+			else if (angle_RAD > M_PI_4) *ptrCCR = mapAngleToCCR(angle_RAD, M_PI_4, M_PI_2, degPos45CCR, degPos90CCR);
+			else *ptrCCR = mapAngleToCCR(angle_RAD, 0, M_PI_4, deg0CCR, degPos45CCR);
+		}
+		if (angle_RAD < 0)
+		{
+			if (angle_RAD <= -M_PI_2) *ptrCCR = degNeg90CCR;
+			if (angle_RAD < -M_PI_4) *ptrCCR = mapAngleToCCR(angle_RAD, -M_PI_4, -M_PI_2, degNeg45CCR, degNeg90CCR);
+			else *ptrCCR = mapAngleToCCR(angle_RAD, 0, -M_PI_4, deg0CCR, degNeg45CCR);
+		}
+	};
+
+	void SetCCRValueByAngle_DEG(float_t angle) {
+
+		//TODO check this
+		//if (angle >= 90) *ptrCCR = degPos90CCR;
+		//else if (IsInRange(angle, 45, 90)) *ptrCCR = mapAngleToCCR(angle, 45, 90, degPos45CCR, degPos90CCR);
+		//else if (IsInRange(angle, 0, 45)) *ptrCCR = mapAngleToCCR(angle, 0, 45, degPos45CCR, degPos90CCR);
+		//else if (IsInRange(angle, -45, 0)) *ptrCCR = mapAngleToCCR(angle, -45, 0, degPos45CCR, degPos90CCR);
+		//else if (IsInRange(angle, -90, -45)) *ptrCCR = mapAngleToCCR(angle, -90, -45, degPos45CCR, degPos90CCR);
+		//else if (angle <= -90) *ptrCCR = degNeg90CCR;
+
+
 		if (angle >= 0)
 		{
-			if (angle >=90) *ptrCCR = degPos90CCR;
+			if (angle >= 90) *ptrCCR = degPos90CCR;
 			else if (angle > 45) *ptrCCR = mapAngleToCCR(angle, 45, 90, degPos45CCR, degPos90CCR);
 			else *ptrCCR = mapAngleToCCR(angle, 0, 45, deg0CCR, degPos45CCR);
 		}
