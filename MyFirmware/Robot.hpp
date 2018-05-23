@@ -17,17 +17,17 @@ public:
 	};
 	void InitRobotProperties() {
 		Vector3D offsetFromOrigin = Vector3D();
-		int16_t offsetX = 35; int16_t offsetY = 35;
+		int16_t offsetX = 35; int16_t offsetY = 35; int16_t offsetZ = -22;
 		Servo servos[NUM_HINGES_IN_LEGS];
 		uint16_t lengths[NUM_HINGES_IN_LEGS] = { 32,64,123 };
 
 #pragma region FrontRightLeg
-		offsetFromOrigin = Vector3D(offsetX, offsetY, 0);
+		offsetFromOrigin = Vector3D(offsetX, offsetY, offsetZ);
 
 		uint16_t characteristicCCRsServo5186[5] = { 6911,	5350,	4025,	2825,	1612 };
 		uint16_t characteristicCCRsServo5185[5] = { 7164,	5650,	4205,	2850,	1767 };
 		uint16_t characteristicCCRsServo5184Reversed[5] = { 1921,	3275,	4650,	5975,	7579 };
-		
+
 		servos[0] = Servo(&htim1.Instance->CCR1, characteristicCCRsServo5186);
 		servos[1] = Servo(&htim1.Instance->CCR2, characteristicCCRsServo5185);
 		servos[2] = Servo(&htim1.Instance->CCR3, characteristicCCRsServo5184Reversed);
@@ -36,7 +36,7 @@ public:
 #pragma endregion
 
 #pragma region FrontLeftLeg
-		offsetFromOrigin = Vector3D(-offsetX, offsetY, 0);
+		offsetFromOrigin = Vector3D(-offsetX, offsetY, offsetZ);
 
 		uint16_t characteristicCCRsServo5135[5] = { 7121,	5325,	3975,	2825,	1678 };
 		uint16_t characteristicCCRsServo5181[5] = { 6977,	5325,	3975,	2725,	1530 };
@@ -49,7 +49,7 @@ public:
 #pragma endregion
 
 #pragma region RearRightLeg
-		offsetFromOrigin = Vector3D(offsetX, -offsetY, 0);
+		offsetFromOrigin = Vector3D(offsetX, -offsetY, offsetZ);
 
 		uint16_t characteristicCCRsServo5134[5] = { 6600,	5125,	3850,	2750,	1650 };
 		uint16_t characteristicCCRsServo5133[5] = { 7894,	5930,	4550,	3340,	2094 };
@@ -63,7 +63,7 @@ public:
 #pragma endregion
 
 #pragma region RearLeftLeg
-		offsetFromOrigin = Vector3D(-offsetX, -offsetY, 0);
+		offsetFromOrigin = Vector3D(-offsetX, -offsetY, offsetZ);
 
 		uint16_t characteristicCCRsServo5131[5] = { 7391,	5650,	4210,	2900,	1753 };
 		uint16_t characteristicCCRsServo5187[5] = { 7442,	5650,	4325,	3025,	1838 };
@@ -75,7 +75,7 @@ public:
 
 		RearLeftLeg = RobotLeg(offsetFromOrigin, lengths, servos);
 #pragma endregion
-		
+
 	};
 };
 

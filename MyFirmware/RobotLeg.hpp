@@ -47,7 +47,7 @@ public:
 	
 	void SetPosition(Vector3D dest) {
 		//! INVERSE KINEMATIC
-		float_t OffsetAngleFromRobotOrigin_RAD = atan2(LegOffsetVectorFromRobotOrigin.Y, LegOffsetVectorFromRobotOrigin.X);;
+		float_t OffsetAngleFromRobotOrigin_RAD = atan2(LegOffsetVectorFromRobotOrigin.Y, LegOffsetVectorFromRobotOrigin.X);
 
 		//Vector3D O1 = LegOffsetVectorFromRobotOrigin;
 		Vector3D destinationPointFromOriginS1 = dest;

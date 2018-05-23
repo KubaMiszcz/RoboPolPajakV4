@@ -145,11 +145,11 @@ int main(void)
 	rl = MyRobot.FrontRightLeg;
 
 	//++debug only variables
-	uint16_t 	delay = 500;
+	uint16_t 	delay = 2;
 	int32_t a = 3000;
 	mapToFloat(65, 83, 45, 6400, 5075);
 	Vector3D testAngles = Vector3D(150, 0, 0);
-	dest = Vector3D(150, 150, 0);
+	dest = Vector3D(100, 100, -75);
 	minBoundaries = Vector3D(0, -150, -150);
 	maxBoundaries = Vector3D(200, 150, 150);
 	vvv = rl.GetFootPosition();
@@ -164,7 +164,19 @@ int main(void)
 		//dest.X = mapToFloat(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
 		//dest.Y = mapToFloat(potReadings[1], 0, ADC_RESOLUTION, minBoundaries.Y, maxBoundaries.Y);
 		//dest.Z = mapToFloat(potReadings[2], 0, ADC_RESOLUTION, minBoundaries.Z, maxBoundaries.Z);
-		rl.SetPosition(dest);
+		for (size_t i = 0; i < 1500; i++)
+		{
+			dest.Add(Vector3D(-0.1, 0.1, 0));
+			rl.SetPosition(dest);
+			HAL_Delay(delay);
+		}
+
+		for (size_t i = 0; i < 1500; i++)
+		{
+			dest.Add(Vector3D(0.1, -0.1, 0));
+			rl.SetPosition(dest);
+			HAL_Delay(delay);
+		}
 
 		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
 		//	ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
