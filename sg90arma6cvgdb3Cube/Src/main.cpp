@@ -63,6 +63,7 @@ Vector3D minBoundaries = Vector3D(0, -150, -150);
 Vector3D maxBoundaries = Vector3D(200, 150, 150);
 Vector3D vvv;
 RobotLeg rl;
+uint8_t stage = 0;
 
 /* USER CODE END PV */
 
@@ -102,7 +103,7 @@ int main(void)
 	SystemClock_Config();
 
 	/* USER CODE BEGIN SysInit */
-		  //HAL_Delay(50);
+	//HAL_Delay(50);
 	/* USER CODE END SysInit */
 
 	/* Initialize all configured peripherals */
@@ -117,7 +118,7 @@ int main(void)
 
 #pragma region HereStartPeripherals
 	HAL_Delay(50);
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)potReadings, 3);
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t *)potReadings, 3);
 
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
@@ -140,12 +141,11 @@ int main(void)
 	MyRobot.InitMCUPeripherals();
 	MyRobot.InitRobotProperties();
 
-
 	//++generateLeg
 	rl = MyRobot.FrontRightLeg;
 
 	//++debug only variables
-	uint16_t 	delay = 2;
+	uint16_t delay = 2;
 	int32_t a = 3000;
 	mapToFloat(65, 83, 45, 6400, 5075);
 	Vector3D testAngles = Vector3D(150, 0, 0);
@@ -153,35 +153,161 @@ int main(void)
 	minBoundaries = Vector3D(0, -150, -150);
 	maxBoundaries = Vector3D(200, 150, 150);
 	vvv = rl.GetFootPosition();
+	RobotLeg FrontLeftLeg = MyRobot.FrontLeftLeg;
+	RobotLeg FrontRightLeg = MyRobot.FrontRightLeg;
+	RobotLeg RearRightLeg = MyRobot.RearRightLeg;
+	RobotLeg RearLeftLeg = MyRobot.RearLeftLeg;
+	stage = 0;
 
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
-	while (1) {
+	while (1)
+	{
 		tick = HAL_GetTick();
+		dest = rl.CurrentFootPosition.Add(Vector3D(-20, -20, 0));
+		if (!rl.IsMoving)
+			rl.MoveByVector(Vector3D(10, 10, 0));
+		else
+			rl.ContinueMove();
+
+		//#################################
+		//StepForward sequence
+		//#################################
+		HAL_Delay(MyRobot.delay);
+
+		float_t moveCG = 20;
+		float_t moveUp = 30;
+		float_t moveDown = -moveUp;
+		float_t moveForward = 30;
+		Vector3D moveCGVector;
+		//############################### START 1st FrontLeftLeg ###########################
+		//simultaneously move CG slighly oppose to moving leg -> right back
+		moveCGVector = Vector3D(moveCG, -moveCG, 0).Inverse();
+		stage = 1;
+		switch (stage)
+		{
+		case 1:
+			FrontLeftLeg.MoveByVector(moveCGVector);
+			FrontRightLeg.MoveByVector(moveCGVector);
+			RearRightLeg.MoveByVector(moveCGVector);
+			RearLeftLeg.MoveByVector(moveCGVector);
+			stage++;
+			break;
+		case 2:
+			if (!MyRobot.IsMoving())
+				stage++;
+			break;
+		case 3:
+			//start lift up leg, move formawr, lift down
+			FrontLeftLeg.MoveByVector(0, 0, moveUp);
+			if (!FrontLeftLeg.IsMoving)
+				stage++;
+			break;
+		case 4:
+			FrontLeftLeg.MoveByVector(0, moveForward, 0);
+			if (!FrontLeftLeg.IsMoving)
+				stage++;
+			break;
+		case 5:
+			FrontLeftLeg.MoveByVector(0, 0, moveDown);
+			if (!FrontLeftLeg.IsMoving)
+				stage++;
+			break;
+		default:
+			break;
+		}
+
+		//Update status
+		if (FrontLeftLeg.IsMoving)
+			FrontLeftLeg.ContinueMove();
+		if (FrontRightLeg.IsMoving)
+			FrontRightLeg.ContinueMove();
+		if (FrontLeftLeg.IsMoving)
+			FrontLeftLeg.ContinueMove();
+		if (FrontLeftLeg.IsMoving)
+			FrontLeftLeg.ContinueMove();
+
+		//######################### END 1ST FrontLeftLeg ########################################
+
+		//######################## START 2nd FrontRightLeg ###################################
+		//move CG slighly oppose to moving leg -> left
+		moveCGVector = Vector3D(-moveCG, moveCG, 0).Add(-moveCG, -moveCG, 0).Inverse();
+		FrontLeftLeg.MoveByVector(moveCGVector);
+		FrontRightLeg.MoveByVector(moveCGVector);
+		RearRightLeg.MoveByVector(moveCGVector);
+		RearLeftLeg.MoveByVector(moveCGVector);
+		//lift up leg, move formawr, lift down
+		FrontRightLeg.MoveByVector(0, 0, moveUp);
+		FrontRightLeg.MoveByVector(0, moveForward, 0);
+		FrontRightLeg.MoveByVector(0, 0, moveDown);
+		//######################### END 2nd FrontRightLeg ########################################
+
+		//######################## START 3nd RearRightLeg ###################################
+		//move CG slighly oppose to moving leg -> left
+		moveCGVector = Vector3D(moveCG, moveCG, 0).Add(-moveCG, moveCG, 0).Inverse();
+		FrontLeftLeg.MoveByVector(moveCGVector);
+		FrontRightLeg.MoveByVector(moveCGVector);
+		RearRightLeg.MoveByVector(moveCGVector);
+		RearLeftLeg.MoveByVector(moveCGVector);
+		//lift up leg, move formawr, lift down
+		RearRightLeg.MoveByVector(0, 0, moveUp);
+		RearRightLeg.MoveByVector(0, moveForward, 0);
+		RearRightLeg.MoveByVector(0, 0, moveDown);
+		//######################### END 3nd RearRightLeg ########################################
+
+		//######################## START 4nd RearLeftLeg ###################################
+		//move CG slighly oppose to moving leg -> left
+		moveCGVector = Vector3D(moveCG, -moveCG, 0).Add(moveCG, moveCG, 0).Inverse();
+		FrontLeftLeg.MoveByVector(moveCGVector);
+		FrontRightLeg.MoveByVector(moveCGVector);
+		RearRightLeg.MoveByVector(moveCGVector);
+		RearLeftLeg.MoveByVector(moveCGVector);
+		//lift up leg, move formawr, lift down
+		RearLeftLeg.MoveByVector(0, 0, moveUp);
+		RearLeftLeg.MoveByVector(0, moveForward, 0);
+		RearLeftLeg.MoveByVector(0, 0, moveDown);
+		//######################### END 4nd RearLeftLeg ########################################
+
+		// ##################### START Pose stand Up #########################
+		moveUp = 100;
+		moveDown = -moveUp;
+		moveCGVector = Vector3D(0, 0, moveUp).Inverse();
+		FrontLeftLeg.MoveByVector(moveCGVector);
+		FrontRightLeg.MoveByVector(moveCGVector);
+		RearRightLeg.MoveByVector(moveCGVector);
+		RearLeftLeg.MoveByVector(moveCGVector);
+		// ##################### END Pose stand Up #########################
+
+		// ##################### START Pose lay down #########################
+		// cos jka kroki tylko nogi wszerz ale musi tuptac i chyba ten srodek ciezkosci balansowac
+		// jak dopracuej kroki to wteyd to
+		// ##################### END Pose lay down #########################
+
 		///manual test inverse kinematic with potentiometers
 		//dest.X = mapToFloat(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
 		//dest.Y = mapToFloat(potReadings[1], 0, ADC_RESOLUTION, minBoundaries.Y, maxBoundaries.Y);
 		//dest.Z = mapToFloat(potReadings[2], 0, ADC_RESOLUTION, minBoundaries.Z, maxBoundaries.Z);
-		for (size_t i = 0; i < 1500; i++)
-		{
-			dest.Add(Vector3D(-0.1, 0.1, 0));
-			rl.SetPosition(dest);
-			HAL_Delay(delay);
-		}
 
-		for (size_t i = 0; i < 1500; i++)
-		{
-			dest.Add(Vector3D(0.1, -0.1, 0));
-			rl.SetPosition(dest);
-			HAL_Delay(delay);
-		}
+		///go by vector and back in loop
+		// for (size_t i = 0; i < 1500; i++)
+		// {
+		// 	dest.Add(Vector3D(-0.1, 0.1, 0));
+		// 	rl.SetPosition(dest);
+		// 	HAL_Delay(delay);
+		// }
+
+		// for (size_t i = 0; i < 1500; i++)
+		// {
+		// 	dest.Add(Vector3D(0.1, -0.1, 0));
+		// 	rl.SetPosition(dest);
+		// 	HAL_Delay(delay);
+		// }
 
 		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
 		//	ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
 		//}
-
 
 		//dest.X = 200;
 		//rl.SetPosition(dest);
@@ -192,23 +318,17 @@ int main(void)
 		//	rl.Servos[i].SetCCRValueByAngle_DEG(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -120, 120));
 		//}
 
-
 		//ss.SetCCRbyAngle(90);
 		//HAL_Delay(delay);
-
 
 		///manual test straight kinematic, servos ccr boundaries etc
 		//rl.Servos[0]->SetCCRValueByAngle_DEG(testAngles.X);
 		//rl.Servos[1]->SetCCRValueByAngle_DEG(testAngles.Y);
 		//rl.Servos[2]->SetCCRValueByAngle_DEG(testAngles.Z);
 
+		/* USER CODE END WHILE */
 
-
-
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-
+		/* USER CODE BEGIN 3 */
 	}
 	/*
 	 //HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_1, (uint32_t*)&duties[0], 1);
@@ -220,7 +340,6 @@ int main(void)
 	 //HAL_Delay(100);
 	 */
 	 /* USER CODE END 3 */
-
 }
 
 /**
@@ -250,8 +369,7 @@ void SystemClock_Config(void)
 
 	/**Initializes the CPU, AHB and APB busses clocks
 	*/
-	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
-		| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
 	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
 	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
 	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -294,13 +412,13 @@ void SystemClock_Config(void)
 void _Error_Handler(char *file, int line)
 {
 	/* USER CODE BEGIN Error_Handler_Debug */
-		  /* User can add his own implementation to report the HAL error return state */
+	/* User can add his own implementation to report the HAL error return state */
 	while (1) {
 	}
 	/* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.
@@ -308,10 +426,10 @@ void _Error_Handler(char *file, int line)
   * @param  line: assert_param error line source number
   * @retval None
   */
-void assert_failed(uint8_t* file, uint32_t line)
+void assert_failed(uint8_t *file, uint32_t line)
 {
 	/* USER CODE BEGIN 6 */
-		  /* User can add his own implementation to report the file name and line number,
+	/* User can add his own implementation to report the file name and line number,
 		   tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
 		   /* USER CODE END 6 */
 }
@@ -322,7 +440,7 @@ void assert_failed(uint8_t* file, uint32_t line)
   */
 
   /**
-	* @}
-	*/
+	  * @}
+	  */
 
-	/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+	  /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
