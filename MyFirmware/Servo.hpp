@@ -6,10 +6,10 @@
  */
 
 #pragma once
-//#include "Enums.hpp"
+ //#include "Enums.hpp"
 
 class Servo {
-  public:
+public:
 	uint16_t degPos90CCR;
 	uint16_t degPos45CCR;
 	uint16_t deg0CCR;
@@ -33,45 +33,43 @@ class Servo {
 	};
 
 	void SetCCRValueByAngle_RAD(float_t angle_RAD) {
-
-		if (angle_RAD >= 0)
-		{
+		if (angle_RAD >= 0) {
 			if (angle_RAD >= M_PI_2) *ptrCCR = degPos90CCR;
-			else if (angle_RAD > M_PI_4) *ptrCCR = mapToFloat(angle_RAD, M_PI_4, M_PI_2, degPos45CCR, degPos90CCR);
-			else *ptrCCR = mapToFloat(angle_RAD, 0, M_PI_4, deg0CCR, degPos45CCR);
+			else if (angle_RAD > M_PI_4) *ptrCCR = mapToFloat_t(angle_RAD, M_PI_4, M_PI_2, degPos45CCR, degPos90CCR);
+			else *ptrCCR = mapToFloat_t(angle_RAD, 0, M_PI_4, deg0CCR, degPos45CCR);
 		}
 		else {
 			if (angle_RAD <= -M_PI_2) *ptrCCR = degNeg90CCR;
-			else if (angle_RAD < -M_PI_4) *ptrCCR = mapToFloat(angle_RAD, -M_PI_4, -M_PI_2, degNeg45CCR, degNeg90CCR);
-			else *ptrCCR = mapToFloat(angle_RAD, 0, -M_PI_4, deg0CCR, degNeg45CCR);
+			else if (angle_RAD < -M_PI_4) *ptrCCR = mapToFloat_t(angle_RAD, -M_PI_4, -M_PI_2, degNeg45CCR, degNeg90CCR);
+			else *ptrCCR = mapToFloat_t(angle_RAD, 0, -M_PI_4, deg0CCR, degNeg45CCR);
 		}
 	};
 
 	void SetCCRValueByAngle_DEG(float_t angle) {
-
-		//TODO check this
-		//if (angle >= 90) *ptrCCR = degPos90CCR;
-		//else if (IsInRange(angle, 45, 90)) *ptrCCR = mapToFloat(angle, 45, 90, degPos45CCR, degPos90CCR);
-		//else if (IsInRange(angle, 0, 45)) *ptrCCR = mapToFloat(angle, 0, 45, degPos45CCR, degPos90CCR);
-		//else if (IsInRange(angle, -45, 0)) *ptrCCR = mapToFloat(angle, -45, 0, degPos45CCR, degPos90CCR);
-		//else if (IsInRange(angle, -90, -45)) *ptrCCR = mapToFloat(angle, -90, -45, degPos45CCR, degPos90CCR);
-		//else if (angle <= -90) *ptrCCR = degNeg90CCR;
-		
 		if (angle >= 0) {
 			if (angle >= 90) *ptrCCR = degPos90CCR;
-			else if (angle > 45) *ptrCCR = mapToFloat(angle, 45, 90, degPos45CCR, degPos90CCR);
-			else *ptrCCR = mapToFloat(angle, 0, 45, deg0CCR, degPos45CCR);
+			else if (angle > 45) *ptrCCR = mapToFloat_t(angle, 45, 90, degPos45CCR, degPos90CCR);
+			else *ptrCCR = mapToFloat_t(angle, 0, 45, deg0CCR, degPos45CCR);
 		}
 		if (angle < 0) {
 			if (angle <= -90) *ptrCCR = degNeg90CCR;
-			else if (angle < -45) *ptrCCR = mapToFloat(angle, -45, -90, degNeg45CCR, degNeg90CCR);
-			else *ptrCCR = mapToFloat(angle, 0, -45, deg0CCR, degNeg45CCR);
+			else if (angle < -45) *ptrCCR = mapToFloat_t(angle, -45, -90, degNeg45CCR, degNeg90CCR);
+			else *ptrCCR = mapToFloat_t(angle, 0, -45, deg0CCR, degNeg45CCR);
 		}
 	};
 
+	//=====debug only==========================
 	uint16_t GetCCRValue() {
 		return *ptrCCR;
 	};
+
+	//TODO check this
+		//if (angle >= 90) *ptrCCR = degPos90CCR;
+		//else if (IsInRange(angle, 45, 90)) *ptrCCR = mapToFloat_t(angle, 45, 90, degPos45CCR, degPos90CCR);
+		//else if (IsInRange(angle, 0, 45)) *ptrCCR = mapToFloat_t(angle, 0, 45, degPos45CCR, degPos90CCR);
+		//else if (IsInRange(angle, -45, 0)) *ptrCCR = mapToFloat_t(angle, -45, 0, degPos45CCR, degPos90CCR);
+		//else if (IsInRange(angle, -90, -45)) *ptrCCR = mapToFloat_t(angle, -90, -45, degPos45CCR, degPos90CCR);
+		//else if (angle <= -90) *ptrCCR = degNeg90CCR;
 };
 
 /*

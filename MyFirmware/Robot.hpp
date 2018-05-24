@@ -19,7 +19,7 @@ class Robot
 	void InitMCUPeripherals() {
 	};
 	void InitRobotProperties() {
-		Vector3D offsetFromOrigin = Vector3D();
+		Vector3D offsetFromOrigin;
 		int16_t offsetX = 35; int16_t offsetY = 35; int16_t offsetZ = -22;
 		Servo servos[NUM_HINGES_IN_LEGS];
 		uint16_t lengths[NUM_HINGES_IN_LEGS] = {32, 64, 123};

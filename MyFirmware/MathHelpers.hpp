@@ -23,7 +23,7 @@
 ///map form one range to another, all data in float_t
 ///@param x output
 ///</summary>
-static float_t mapToFloat(float_t x, float_t fromLow, float_t fromHigh, float_t toLow, float_t toHigh)
+static float_t mapToFloat_t(float_t x, float_t fromLow, float_t fromHigh, float_t toLow, float_t toHigh)
 {
 	return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
 };

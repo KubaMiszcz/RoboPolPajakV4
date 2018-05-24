@@ -9,27 +9,26 @@
 #include "Servo.hpp"
 
 class RobotLeg {
-  public:
+public:
 	Vector3D LegOffsetVectorFromRobotOrigin;
 	uint16_t Length[NUM_HINGES_IN_LEGS];
 	Servo Servos[NUM_HINGES_IN_LEGS];
 	Vector3D CurrentFootPosition;
 	bool IsMoving;
 
-  private:   
-	uint32_t Length1Square;
+private:
+	uint32_t Length1Square = pow((float_t)Length[1], 2);
 	uint32_t Length2Square;
-	uint8_t movementStepsDivider; //?TODO: if =1 here is it initialzed with 1? or do i need it in ctor
+	uint8_t movementStepsDivider = 1;
 	uint16_t stepsLeft;
 	Vector3D stepVector3D;
 
 	//debug only
 	float_t Theta_DEG[3];
 
-  public:
+public:
 	RobotLeg() {
-		movementStepsDivider = 1;
-		stepVector3D = Vector3D(0, 0, 0);
+		//stepVector3D = Vector3D(0, 0, 0);
 	};
 
 	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEGS], Servo servos[NUM_HINGES_IN_LEGS]) {
@@ -82,7 +81,7 @@ class RobotLeg {
 
 		//Vector3D O1 = LegOffsetVectorFromRobotOrigin;
 		//check this
-		Vector3D destinationPointFromOriginS1xxxx = dest - LegOffsetVectorFromRobotOrigin;
+		Vector3D destinationPointFromOriginS1xxx = dest - LegOffsetVectorFromRobotOrigin;
 		Vector3D destinationPointFromOriginS1 = dest;
 		destinationPointFromOriginS1.Subtract(LegOffsetVectorFromRobotOrigin);
 

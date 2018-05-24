@@ -2,13 +2,11 @@
 class Vector3D
 {
   public:
-	float_t X;
-	float_t Y;
-	float_t Z;
+	float_t X=0;
+	float_t Y=0;
+	float_t Z=0;
 
-	Vector3D() {
-		X = 0; Y = 0; Z = 0;
-	};
+	Vector3D() {};
 
 	Vector3D(float_t x, float_t y = 0, float_t z = 0) {
 		X = x; Y = y; Z = z;
@@ -35,7 +33,7 @@ class Vector3D
 	// 	return powf(X, 2) + powf(Y, 2) + powf(Z, 2);
 	// };
 
-	Vector3D Inverse() { //todo change Negate
+	Vector3D Negate() { 
 		X *= -1; Y *= -1; Z *= -1;
 		return *this;
 	};
@@ -45,9 +43,7 @@ class Vector3D
 	};
 
 	Vector3D Add(Vector3D p) {
-		this->X += p.X; //todo is it need by this-> ???
-		this->Y += p.Y;
-		this->Z += p.Z;
+		X += p.X; Y += p.Y; Z += p.Z;
 		return *this;
 	};
 
@@ -56,9 +52,7 @@ class Vector3D
 	};
 
 	Vector3D Subtract(Vector3D p) {
-		this->X -= p.X; //todo is it need by this-> ???
-		this->Y -= p.Y;
-		this->Z -= p.Z;
+		X -= p.X; Y -= p.Y; Z -= p.Z;
 		return *this;
 	};
 
