@@ -192,7 +192,7 @@ int main(void)
 		//	rl.ContinueMove();
 
 		////#################################
-		////StepForward sequence
+		////OneStepForward sequence
 		////#################################
 		//HAL_Delay(MyRobot.delay);
 

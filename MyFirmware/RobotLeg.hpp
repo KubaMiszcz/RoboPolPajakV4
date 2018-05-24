@@ -17,7 +17,7 @@ public:
 	bool IsMoving;
 
 private:
-	uint32_t Length1Square = pow((float_t)Length[1], 2);
+	uint32_t Length1Square;
 	uint32_t Length2Square;
 	uint8_t movementStepsDivider = 1;
 	uint16_t stepsLeft;
@@ -38,8 +38,8 @@ public:
 			Length[i] = lengths[i];
 			Servos[i] = servos[i];
 		}
-		Length1Square = pow((float_t)Length[1], 2);
-		Length2Square = pow((float_t)Length[2], 2);
+		Length1Square = powf(Length[1], 2);
+		Length2Square = powf(Length[2], 2);
 	};
 
 	void MoveToPoint(float_t x, float_t y, float_t z) {
@@ -75,45 +75,46 @@ public:
 		return CurrentFootPosition;
 	};
 
-	void SetPosition(Vector3D dest) {
+	void SetPosition(Vector3D destinationPoint) {
 		//! HERE IS INVERSE KINEMATIC
-		float_t OffsetAngleFromRobotOrigin_RAD = atan2(LegOffsetVectorFromRobotOrigin.Y, LegOffsetVectorFromRobotOrigin.X);
+		float_t OffsetAngleFromRobotOrigin_RAD = atan2f(LegOffsetVectorFromRobotOrigin.Y, LegOffsetVectorFromRobotOrigin.X);
 
 		//Vector3D O1 = LegOffsetVectorFromRobotOrigin;
 		//check this
-		Vector3D destinationPointFromOriginS1xxx = dest - LegOffsetVectorFromRobotOrigin;
-		Vector3D destinationPointFromOriginS1 = dest;
-		destinationPointFromOriginS1.Subtract(LegOffsetVectorFromRobotOrigin);
+		Vector3D destinationPointFromOriginS1 = destinationPoint - LegOffsetVectorFromRobotOrigin;
+		Vector3D destinationPointFromOriginS1XXX = destinationPoint; //todo sprawdz i skasuj
+		destinationPointFromOriginS1XXX.Subtract(LegOffsetVectorFromRobotOrigin);
 
 		float_t Theta_RAD[3];
 		//atan2(y,x)
-		Theta_RAD[0] = atan2(destinationPointFromOriginS1.Y, destinationPointFromOriginS1.X);
+		Theta_RAD[0] = atan2f(destinationPointFromOriginS1.Y, destinationPointFromOriginS1.X);
 
-		Vector3D originS2 = Vector3D(LegOffsetVectorFromRobotOrigin.X + Length[0] * cos(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Y + Length[0] * sin(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Z);
+		Vector3D originS2 = Vector3D(LegOffsetVectorFromRobotOrigin.X + Length[0] * cosf(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Y + Length[0] * sinf(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Z);
 
-		Vector3D destinationPointFromOriginS2 = dest;
-		destinationPointFromOriginS2.Subtract(originS2);
+		Vector3D destinationPointFromOriginS2 = destinationPoint - originS2;
+		Vector3D destinationPointFromOriginS2XXX = destinationPoint;//todo sprawdz i skasuj
+		destinationPointFromOriginS2XXX.Subtract(originS2);
 
-		float_t destinationPointFromOriginS2_X_Square = pow(destinationPointFromOriginS2.X, 2);
-		float_t destinationPointFromOriginS2_Y_Square = pow(destinationPointFromOriginS2.Y, 2);
+		float_t destinationPointFromOriginS2_X_Square = powf(destinationPointFromOriginS2.X, 2);
+		float_t destinationPointFromOriginS2_Y_Square = powf(destinationPointFromOriginS2.Y, 2);
 
-		float_t magnitudeOriginS2toDestination = sqrt(destinationPointFromOriginS2_X_Square + destinationPointFromOriginS2_Y_Square + pow(destinationPointFromOriginS2.Z, 2));
+		float_t magnitudeOriginS2toDestination = sqrtf(destinationPointFromOriginS2_X_Square + destinationPointFromOriginS2_Y_Square + powf(destinationPointFromOriginS2.Z, 2));
 
-		//check if is dest point in leg range
+		//check if is destinationPoint point in leg range
 		if (magnitudeOriginS2toDestination > Length[1] + Length[2])
 			return;
 
 		//(locX^2 + locY^2 + locZ^2 - L1^2 - L2^2) / 	(2* L1 * L2)
-		float_t cos3 = (pow(magnitudeOriginS2toDestination, 2) - Length1Square - Length2Square) / (2 * Length[1] * Length[2]);
+		float_t cos3 = (powf(magnitudeOriginS2toDestination, 2) - Length1Square - Length2Square) / (2 * Length[1] * Length[2]);
 
 		//= - sqrt(1 - c3^2)
-		float_t sin3 = -sqrt(1 - pow(cos3, 2));
+		float_t sin3 = -sqrtf(1 - pow(cos3, 2));
 
 		//= atan2(locZ , sqrt(locX^2 + locZ^2) - atan2(L2*c3, L1+L2*c3)
-		Theta_RAD[1] = atan2(destinationPointFromOriginS2.Z, sqrt(destinationPointFromOriginS2_X_Square + destinationPointFromOriginS2_Y_Square)) - atan2(Length[2] * sin3, Length[1] + Length[2] * cos3);
+		Theta_RAD[1] = atan2f(destinationPointFromOriginS2.Z, sqrtf(destinationPointFromOriginS2_X_Square + destinationPointFromOriginS2_Y_Square)) - atan2f(Length[2] * sin3, Length[1] + Length[2] * cos3);
 
 		//atan2(sin3, cos3);
-		Theta_RAD[2] = atan2(sin3, cos3);
+		Theta_RAD[2] = atan2f(sin3, cos3);
 
 		//!minus 45degrees because servo 0posioton is 45degree offset from global X
 		Theta_RAD[0] = OffsetAngleFromRobotOrigin_RAD - Theta_RAD[0];
@@ -136,7 +137,7 @@ public:
 			Theta_DEG[i] = ToDegrees(Theta_RAD[i]);	//debug only
 		}
 
-		CurrentFootPosition = dest;
+		CurrentFootPosition = destinationPoint;
 	};
 };
 

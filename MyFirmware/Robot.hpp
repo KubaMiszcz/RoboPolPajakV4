@@ -93,7 +93,7 @@ class Robot
 		return (FrontLeftLeg.IsMoving || FrontRightLeg.IsMoving || RearRightLeg.IsMoving || RearLeftLeg.IsMoving) ? true : false;
 	}
 
-	void StepForward() {
+	void OneStepForward() {
 	};
 };
 
