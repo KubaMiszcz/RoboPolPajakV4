@@ -8,7 +8,7 @@ class Robot
 	RobotLeg FrontRightLeg;
 	RobotLeg RearRightLeg;
 	RobotLeg RearLeftLeg;
-	uint8_t Delay;
+	uint8_t Delay=1;
 	//HAL_Delay(Delay); // fix it with time dependent, queue or sth non blocking
 
 	//debug only
