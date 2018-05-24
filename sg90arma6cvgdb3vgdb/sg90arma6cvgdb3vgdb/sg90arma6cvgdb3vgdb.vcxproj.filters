@@ -353,6 +353,9 @@
     <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\i2c.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\MyFirmware\MainLoop.hpp">
+      <Filter>MyFirmware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\adc.c">

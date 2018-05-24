@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\MyFirmware\Enums.hpp" />
     <ClInclude Include="..\..\MyFirmware\GlobalConstants.hpp" />
+    <ClInclude Include="..\..\MyFirmware\MainLoop.hpp" />
     <ClInclude Include="..\..\MyFirmware\MathHelpers.hpp" />
     <ClInclude Include="..\..\MyFirmware\MyIncludes.hpp" />
     <ClInclude Include="..\..\MyFirmware\Robot.hpp" />

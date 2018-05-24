@@ -8,8 +8,8 @@ class Robot
 	RobotLeg FrontRightLeg;
 	RobotLeg RearRightLeg;
 	RobotLeg RearLeftLeg;
-	uint8_t delay;
-	//HAL_Delay(delay); // fix it with time dependent, queue or sth non blocking
+	uint8_t Delay;
+	//HAL_Delay(Delay); // fix it with time dependent, queue or sth non blocking
 
 	//debug only
 	//RobotLeg AllLegs[NUM_LEGS];
@@ -21,8 +21,8 @@ class Robot
 	void InitRobotProperties() {
 		Vector3D offsetFromOrigin;
 		int16_t offsetX = 35; int16_t offsetY = 35; int16_t offsetZ = -22;
-		Servo servos[NUM_HINGES_IN_LEGS];
-		uint16_t lengths[NUM_HINGES_IN_LEGS] = {32, 64, 123};
+		Servo servos[NUM_HINGES_IN_LEG];
+		uint16_t lengths[NUM_HINGES_IN_LEG] = {32, 64, 123};
 
 #pragma region FrontRightLeg
 		offsetFromOrigin = Vector3D(offsetX, offsetY, offsetZ);

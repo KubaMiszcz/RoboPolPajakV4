@@ -6,15 +6,11 @@ spowolnienie nogi
 balans
 sekwencja jednego kroku
 dodac metody przyjmujace dwa vectory zwracajace trzeci;
-vectro negate zamist inverse
-przeciazone operary yaayyyy przeorb setposition
 
 
 
 
 ##small fixes
-change NUM_HINGES_IN_LEGS to NUM_HINGES_IN_LEG
-atan2 pow itp na atan2f, powf itp
 
 
 

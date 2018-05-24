@@ -11,8 +11,8 @@
 class RobotLeg {
 public:
 	Vector3D LegOffsetVectorFromRobotOrigin;
-	uint16_t Length[NUM_HINGES_IN_LEGS];
-	Servo Servos[NUM_HINGES_IN_LEGS];
+	uint16_t Length[NUM_HINGES_IN_LEG];
+	Servo Servos[NUM_HINGES_IN_LEG];
 	Vector3D CurrentFootPosition;
 	bool IsMoving;
 
@@ -31,10 +31,10 @@ public:
 		//stepVector3D = Vector3D(0, 0, 0);
 	};
 
-	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEGS], Servo servos[NUM_HINGES_IN_LEGS]) {
+	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEG], Servo servos[NUM_HINGES_IN_LEG]) {
 		LegOffsetVectorFromRobotOrigin = offsetFromRobotOrigin;
 
-		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+		for (size_t i = 0; i < NUM_HINGES_IN_LEG; i++) {
 			Length[i] = lengths[i];
 			Servos[i] = servos[i];
 		}
@@ -82,8 +82,6 @@ public:
 		//Vector3D O1 = LegOffsetVectorFromRobotOrigin;
 		//check this
 		Vector3D destinationPointFromOriginS1 = destinationPoint - LegOffsetVectorFromRobotOrigin;
-		Vector3D destinationPointFromOriginS1XXX = destinationPoint; //todo sprawdz i skasuj
-		destinationPointFromOriginS1XXX.Subtract(LegOffsetVectorFromRobotOrigin);
 
 		float_t Theta_RAD[3];
 		//atan2(y,x)
@@ -92,8 +90,6 @@ public:
 		Vector3D originS2 = Vector3D(LegOffsetVectorFromRobotOrigin.X + Length[0] * cosf(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Y + Length[0] * sinf(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Z);
 
 		Vector3D destinationPointFromOriginS2 = destinationPoint - originS2;
-		Vector3D destinationPointFromOriginS2XXX = destinationPoint;//todo sprawdz i skasuj
-		destinationPointFromOriginS2XXX.Subtract(originS2);
 
 		float_t destinationPointFromOriginS2_X_Square = powf(destinationPointFromOriginS2.X, 2);
 		float_t destinationPointFromOriginS2_Y_Square = powf(destinationPointFromOriginS2.Y, 2);
@@ -130,7 +126,7 @@ public:
 		//!plus 90degrees because servo 0posioton is 90degree offset
 		Theta_RAD[2] += M_PI_2; // 90 / TO_DEGREES;
 
-		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
+		for (size_t i = 0; i < NUM_HINGES_IN_LEG; i++)
 		{
 			Servos[i].SetCCRValueByAngle_RAD(Theta_RAD[i]);
 			Servos[i].theta = ToDegrees(Theta_RAD[i]); //debug only

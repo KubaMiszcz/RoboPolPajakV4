@@ -57,7 +57,7 @@
 //!++Debug Only
 uint16_t potReadings[3];
 uint16_t duties[3];
-float_t ThetaAngles[NUM_HINGES_IN_LEGS];
+float_t ThetaAngles[NUM_HINGES_IN_LEG];
 Vector3D dest = Vector3D(150, 0, 0);
 Vector3D minBoundaries = Vector3D(0, -150, -150);
 Vector3D maxBoundaries = Vector3D(200, 150, 150);
@@ -140,10 +140,7 @@ int main(void)
 	Robot MyRobot = Robot();
 	MyRobot.InitMCUPeripherals();
 	MyRobot.InitRobotProperties();
-
-	//++generateLeg
-	rl = MyRobot.FrontRightLeg;
-
+	
 	//++debug only variables
 	uint16_t delay = 2;
 	int32_t a = 3000;
@@ -157,6 +154,7 @@ int main(void)
 	RobotLeg FrontRightLeg = MyRobot.FrontRightLeg;
 	RobotLeg RearRightLeg = MyRobot.RearRightLeg;
 	RobotLeg RearLeftLeg = MyRobot.RearLeftLeg;
+	rl = MyRobot.FrontRightLeg;
 	stage = 0;
 
 	/* USER CODE END 2 */
@@ -166,35 +164,19 @@ int main(void)
 	while (1)
 	{
 		tick = HAL_GetTick();
-		Vector3D wert;
-		Vector3D v123 = Vector3D();
-		Vector3D ff = v123 + v123;
-		Vector3D aa = Vector3D(1, 1, 1) + Vector3D(2, 2, 2);
-		Vector3D bb = aa + aa;
-		Vector3D cc = aa.Negate();
-		Vector3D dd = aa.Add(bb);
-		Vector3D rr = aa;
-		rr.Negate();
-		float_t ee = Vector3D(1, 5, 6).AbsMaxCoord();
 
 
 
-
-
-
-
-
-
-		//dest = rl.CurrentFootPosition.Add(Vector3D(-20, -20, 0));
-		//if (!rl.IsMoving)
-		//	rl.MoveByVector(Vector3D(10, 10, 0));
-		//else
-		//	rl.ContinueMove();
+		dest = rl.CurrentFootPosition.Add(Vector3D(-20, -20, 0));
+		if (!rl.IsMoving)
+			rl.MoveByVector(Vector3D(10, 10, 0));
+		else
+			rl.ContinueMove();
 
 		////#################################
 		////OneStepForward sequence
 		////#################################
-		//HAL_Delay(MyRobot.delay);
+		HAL_Delay(MyRobot.Delay);
 
 		//float_t moveCG = 20;
 		//float_t moveUp = 30;
@@ -324,7 +306,7 @@ int main(void)
 		// 	HAL_Delay(delay);
 		// }
 
-		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+		//for (int i = 0; i < NUM_HINGES_IN_LEG; i++) {
 		//	ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
 		//}
 
@@ -333,7 +315,7 @@ int main(void)
 		//HAL_Delay(500);
 		//dest.X = 150;
 
-		//for (int i = 0; i < NUM_HINGES_IN_LEGS; i++) {
+		//for (int i = 0; i < NUM_HINGES_IN_LEG; i++) {
 		//	rl.Servos[i].SetCCRValueByAngle_DEG(mapToLong(potReadings[i], 0, ADC_RESOLUTION, -120, 120));
 		//}
 
