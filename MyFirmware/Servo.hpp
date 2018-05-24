@@ -9,20 +9,20 @@
 //#include "Enums.hpp"
 
 class Servo {
-public:
+  public:
 	uint16_t degPos90CCR;
 	uint16_t degPos45CCR;
 	uint16_t deg0CCR;
 	uint16_t degNeg45CCR;
 	uint16_t degNeg90CCR;
-	volatile uint32_t* ptrCCR;
+	volatile uint32_t *ptrCCR;
 
 	//?debug Only
 	float_t theta;
 
 	Servo() {};
 
-	Servo(volatile uint32_t* ccr, uint16_t characteristicCCRs[5]) {
+	Servo(volatile uint32_t *ccr, uint16_t characteristicCCRs[5]) {
 		ptrCCR = ccr;
 		degPos90CCR = characteristicCCRs[0];
 		degPos45CCR = characteristicCCRs[1];
@@ -40,10 +40,9 @@ public:
 			else if (angle_RAD > M_PI_4) *ptrCCR = mapToFloat(angle_RAD, M_PI_4, M_PI_2, degPos45CCR, degPos90CCR);
 			else *ptrCCR = mapToFloat(angle_RAD, 0, M_PI_4, deg0CCR, degPos45CCR);
 		}
-		if (angle_RAD < 0)
-		{
+		else {
 			if (angle_RAD <= -M_PI_2) *ptrCCR = degNeg90CCR;
-			if (angle_RAD < -M_PI_4) *ptrCCR = mapToFloat(angle_RAD, -M_PI_4, -M_PI_2, degNeg45CCR, degNeg90CCR);
+			else if (angle_RAD < -M_PI_4) *ptrCCR = mapToFloat(angle_RAD, -M_PI_4, -M_PI_2, degNeg45CCR, degNeg90CCR);
 			else *ptrCCR = mapToFloat(angle_RAD, 0, -M_PI_4, deg0CCR, degNeg45CCR);
 		}
 	};
@@ -57,18 +56,15 @@ public:
 		//else if (IsInRange(angle, -45, 0)) *ptrCCR = mapToFloat(angle, -45, 0, degPos45CCR, degPos90CCR);
 		//else if (IsInRange(angle, -90, -45)) *ptrCCR = mapToFloat(angle, -90, -45, degPos45CCR, degPos90CCR);
 		//else if (angle <= -90) *ptrCCR = degNeg90CCR;
-
-
-		if (angle >= 0)
-		{
+		
+		if (angle >= 0) {
 			if (angle >= 90) *ptrCCR = degPos90CCR;
 			else if (angle > 45) *ptrCCR = mapToFloat(angle, 45, 90, degPos45CCR, degPos90CCR);
 			else *ptrCCR = mapToFloat(angle, 0, 45, deg0CCR, degPos45CCR);
 		}
-		if (angle < 0)
-		{
+		if (angle < 0) {
 			if (angle <= -90) *ptrCCR = degNeg90CCR;
-			if (angle < -45) *ptrCCR = mapToFloat(angle, -45, -90, degNeg45CCR, degNeg90CCR);
+			else if (angle < -45) *ptrCCR = mapToFloat(angle, -45, -90, degNeg45CCR, degNeg90CCR);
 			else *ptrCCR = mapToFloat(angle, 0, -45, deg0CCR, degNeg45CCR);
 		}
 	};
@@ -76,15 +72,7 @@ public:
 	uint16_t GetCCRValue() {
 		return *ptrCCR;
 	};
-
-
 };
-
-
-
-
-
-
 
 /*
 
@@ -121,21 +109,20 @@ return 121;
 */
 
 /*
- Jak utworzyæ definicjê wskaŸnika na funkcjê?
- Mamy deklaracjê funkcji:
+ Jak utworzyï¿½ definicjï¿½ wskaï¿½nika na funkcjï¿½?
+ Mamy deklaracjï¿½ funkcji:
  int mojaFunkcja( float a, int b, const char * c );
- Oczyszczamy j¹ z nazw argumentów:
+ Oczyszczamy jï¿½ z nazw argumentï¿½w:
  int mojaFunkcja( float, int, const char * );
- Nazwê funkcji zmieniamy na jak¹œ now¹ nazwê i dopisujemy na pocz¹tku typedef:
+ Nazwï¿½ funkcji zmieniamy na jakï¿½ï¿½ nowï¿½ nazwï¿½ i dopisujemy na poczï¿½tku typedef:
  typedef int nazwaTypuT( float, int, const char * );
- Nazwê typu umieszczamy w nawiasach zaokr¹glonych:
+ Nazwï¿½ typu umieszczamy w nawiasach zaokrï¿½glonych:
  typedef int( nazwaTypuT )( float, int, const char * );
- Przed nazw¹ typu i jednoczeœnie za wstawionym nawiasem otwieraj¹cym, dostawionym w poprzednim kroku - umieszczamy gwiazdkê:
+ Przed nazwï¿½ typu i jednoczeï¿½nie za wstawionym nawiasem otwierajï¿½cym, dostawionym w poprzednim kroku - umieszczamy gwiazdkï¿½:
  typedef int( * nazwaTypuT )( float, int, const char * );
- Jak zapisaæ adres funkcji do wskaŸnika?
+ Jak zapisaï¿½ adres funkcji do wskaï¿½nika?
  nazwaTypuT pWskaznikNaFunkcje = mojaFunkcja;
 
- Jak wywo³aæ funkcjê zapisan¹ we wskaŸniku?
+ Jak wywoï¿½aï¿½ funkcjï¿½ zapisanï¿½ we wskaï¿½niku?
  int iWynik = pWskaznikNaFunkcje( 123.4f, 567, "Koniec" );
  */
-
