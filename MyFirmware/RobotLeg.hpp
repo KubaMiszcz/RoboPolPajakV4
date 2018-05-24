@@ -9,31 +9,33 @@
 #include "Servo.hpp"
 
 class RobotLeg {
-public:
+  public:
 	Vector3D LegOffsetVectorFromRobotOrigin;
-	//float_t OffsetAngleFromRobotOrigin_RAD;
 	uint16_t Length[NUM_HINGES_IN_LEGS];
 	Servo Servos[NUM_HINGES_IN_LEGS];
 	Vector3D CurrentFootPosition;
 	bool IsMoving;
 
-private:
+  private:   
 	uint32_t Length1Square;
 	uint32_t Length2Square;
+	uint8_t movementStepsDivider; //?TODO: if =1 here is it initialzed with 1? or do i need it in ctor
+	uint16_t stepsLeft;
+	Vector3D stepVector3D;
 
 	//debug only
 	float_t Theta_DEG[3];
 
-
-public:
-	RobotLeg() {};
+  public:
+	RobotLeg() {
+		movementStepsDivider = 1;
+		stepVector3D = Vector3D(0, 0, 0);
+	};
 
 	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEGS], Servo servos[NUM_HINGES_IN_LEGS]) {
 		LegOffsetVectorFromRobotOrigin = offsetFromRobotOrigin;
-		//OffsetAngleFromRobotOrigin_RAD = myAtan2(LegOffsetVectorFromRobotOrigin.Y, LegOffsetVectorFromRobotOrigin.X);
 
-		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
-		{
+		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++) {
 			Length[i] = lengths[i];
 			Servos[i] = servos[i];
 		}
@@ -41,15 +43,46 @@ public:
 		Length2Square = pow((float_t)Length[2], 2);
 	};
 
+	void MoveToPoint(float_t x, float_t y, float_t z) {
+		MoveToPoint(Vector3D(x, y, z));
+	};
+
+	void MoveToPoint(Vector3D dest) {
+		MoveByVector(dest.Subtract(CurrentFootPosition));
+	};
+
+	void MoveByVector(float_t x, float_t y, float_t z) {
+		MoveByVector(Vector3D(x, y, z));
+	};
+
+	void MoveByVector(Vector3D dest) {
+		float_t movementSteps = dest.AbsMaxCoord() * movementStepsDivider;
+		stepsLeft = movementSteps;
+		stepVector3D = Vector3D(dest.X / movementSteps, dest.Y / movementSteps, dest.Z / movementSteps);
+		IsMoving = true;
+		//TODO: add call continume move
+	};
+
+	void ContinueMove() {
+		SetPosition(CurrentFootPosition.Add(stepVector3D));
+		stepsLeft--;
+		if (stepsLeft <= 0)
+		{
+			IsMoving = false;
+		}
+	};
+
 	Vector3D GetFootPosition() {
 		return CurrentFootPosition;
 	};
-	
+
 	void SetPosition(Vector3D dest) {
-		//! INVERSE KINEMATIC
+		//! HERE IS INVERSE KINEMATIC
 		float_t OffsetAngleFromRobotOrigin_RAD = atan2(LegOffsetVectorFromRobotOrigin.Y, LegOffsetVectorFromRobotOrigin.X);
 
 		//Vector3D O1 = LegOffsetVectorFromRobotOrigin;
+		//check this
+		Vector3D destinationPointFromOriginS1xxxx = dest - LegOffsetVectorFromRobotOrigin;
 		Vector3D destinationPointFromOriginS1 = dest;
 		destinationPointFromOriginS1.Subtract(LegOffsetVectorFromRobotOrigin);
 
@@ -57,8 +90,7 @@ public:
 		//atan2(y,x)
 		Theta_RAD[0] = atan2(destinationPointFromOriginS1.Y, destinationPointFromOriginS1.X);
 
-		Vector3D originS2 = Vector3D(LegOffsetVectorFromRobotOrigin.X + Length[0] * cos(Theta_RAD[0]),
-			LegOffsetVectorFromRobotOrigin.Y + Length[0] * sin(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Z);
+		Vector3D originS2 = Vector3D(LegOffsetVectorFromRobotOrigin.X + Length[0] * cos(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Y + Length[0] * sin(Theta_RAD[0]), LegOffsetVectorFromRobotOrigin.Z);
 
 		Vector3D destinationPointFromOriginS2 = dest;
 		destinationPointFromOriginS2.Subtract(originS2);
@@ -94,44 +126,20 @@ public:
 		{
 			Theta_RAD[0] = Theta_RAD[0] - 2 * M_PI;
 		}
-		
-		//!plus 90degrees because servo 0posioton is 90degree offset 
+
+		//!plus 90degrees because servo 0posioton is 90degree offset
 		Theta_RAD[2] += M_PI_2; // 90 / TO_DEGREES;
 
 		for (size_t i = 0; i < NUM_HINGES_IN_LEGS; i++)
 		{
 			Servos[i].SetCCRValueByAngle_RAD(Theta_RAD[i]);
-			Servos[i].theta = ToDegrees(Theta_RAD[i]);	//debug only
+			Servos[i].theta = ToDegrees(Theta_RAD[i]); //debug only
 			Theta_DEG[i] = ToDegrees(Theta_RAD[i]);	//debug only
 		}
 
 		CurrentFootPosition = dest;
 	};
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 #ifndef __ROBOTARM_H__
@@ -171,5 +179,3 @@ void SetAngles(RobotArm* ra, float th1, float th2, float th3) {
 
 
 #endif /* __ROBOTARM_H__ */
-
-
