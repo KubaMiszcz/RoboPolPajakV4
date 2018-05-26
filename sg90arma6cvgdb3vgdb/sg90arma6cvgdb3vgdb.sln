@@ -4,6 +4,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sg90arma6cvgdb3vgdb", "sg90arma6cvgdb3vgdb\sg90arma6cvgdb3vgdb.vcxproj", "{2C19B74D-0CFD-4709-88DA-3FEBB4A5BC19}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{19F9664C-0916-4097-A3EA-CAFFEAB34251}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86

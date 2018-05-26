@@ -1,10 +1,9 @@
 #pragma once
 //MCU Constants
-static const uint16_t ADC_RESOLUTION = 4095.0;
+static const uint16_t ADC_RESOLUTION = 4095;
 //Robot Constants
 static const uint8_t NUM_LEGS = 4;
 static const uint8_t NUM_HINGES_IN_LEG = 3;
-static const uint8_t ROBOT_SPEED = 3;
 //Other Constants
 static const float_t TO_DEGREES = 180 / M_PI;
 uint32_t tick = 0;

@@ -12,7 +12,7 @@ RobotLeg rl;
 uint8_t stage = 0;
 
 
-int MainLoop() {
+inline int MainLoop() {
 
 #pragma region ###_HereStartPeripherals_###
 	HAL_Delay(50);
@@ -58,7 +58,7 @@ int MainLoop() {
 
 
 
-	while (1) {
+	while (true) {
 		tick = HAL_GetTick();
 
 		//Update status
@@ -129,7 +129,7 @@ int MainLoop() {
 		// 	HAL_Delay(delay);
 		// }
 
-		for (int i = 0; i < NUM_HINGES_IN_LEG; i++) {
+		for (size_t i = 0; i < NUM_HINGES_IN_LEG; i++) {
 			ThetaAngles[i] = MyRobot.FrontLeftLeg.Servos[i].theta;
 		}
 
@@ -160,6 +160,6 @@ int MainLoop() {
 		//HAL_Delay(100);
 		*/
 	}
-};
+}
 
 

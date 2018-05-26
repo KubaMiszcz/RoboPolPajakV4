@@ -367,9 +367,6 @@
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\gpio.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\main.cpp">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_hal_msp.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
@@ -560,6 +557,9 @@
       <Filter>Source files\Device-specific files\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\i2c.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\main.cpp">
       <Filter>Source files\Src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,7 +1,6 @@
 #pragma once
 #include "RobotLeg.hpp"
-class Robot
-{
+class Robot {
 public:
 	Vector3D CurrentCOGPosition; //todo update this somehow?
 	RobotLeg FrontLeftLeg;
@@ -20,9 +19,9 @@ private:
 	//debug only
 
 public:
-	Robot() {};
+	Robot() {}
 
-	void InitMCUPeripherals() {	};
+	void InitMCUPeripherals() {}
 
 	void InitRobotProperties() {
 		Vector3D offsetFromOrigin;
@@ -90,7 +89,7 @@ public:
 		AllLegs[1] = FrontRightLeg;
 		AllLegs[2] = RearRightLeg;
 		AllLegs[3] = RearLeftLeg;
-	};
+	}
 
 	void MoveGravityCenterByVector(float_t x, float_t y, float_t z) {
 		MoveGravityCenterByVector(Vector3D(x, y, z));
@@ -114,7 +113,7 @@ public:
 		}
 	}
 
-	bool IsMoving() {
+	bool IsMoving() const {
 		bool result = false;
 		for (size_t i = 0; i < NUM_LEGS; i++)
 		{
@@ -123,13 +122,13 @@ public:
 		return result;
 	}
 
-	bool IsInDestination() {
+	bool IsInDestination() const {
 		return !IsMoving();
 	}
 
 	void MoveOneLeg(RobotLeg leg, float_t x = 0, float_t y = 30, float_t z = 30) {
 		MoveOneLeg(leg, Vector3D(x, y, z));
-	};
+	}
 
 	uint8_t MoveOneLeg(RobotLeg robotLeg, Vector3D destination) {
 		switch (movementStage)
@@ -180,7 +179,7 @@ public:
 			break;
 		}
 		return 0;
-	};
+	}
 
 
 
@@ -230,13 +229,13 @@ public:
 	//	RearLeftLeg.MoveByVector(0, moveForward, 0);
 	//	RearLeftLeg.MoveByVector(0, 0, moveDown);
 	//	//######################### END 4nd RearLeftLeg ########################################
-	//};
+	//}
 
 	void SetPoseStandUp(float_t height = 100) {
 		// ##################### START Pose stand Up #########################
 		MoveGravityCenterByVector(Vector3D(0, 0, height));
 		// ##################### END Pose stand Up #########################
-	};
+	}
 
 
 	void SetPoseLayDown() {
@@ -244,7 +243,7 @@ public:
 		//cos jka kroki tylko nogi wszerz ale musi tuptac i chyba ten srodek ciezkosci balansowac
 		//jak dopracuej kroki to wteyd to
 		//##################### END Pose lay down #########################
-	};
+	}
 };
 
 //uint8_t Speed = 88;

@@ -26,15 +26,15 @@
 static float_t mapToFloat_t(float_t x, float_t fromLow, float_t fromHigh, float_t toLow, float_t toHigh)
 {
 	return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
-};
+}
 
-float_t ToDegrees(float_t rad) {
+static float_t ToDegrees(float_t rad) {
 	return rad * TO_DEGREES;
-};
+}
 
-int8_t sgn(float_t val) {
+static int8_t sgn(float_t val) {
 	return (val > 0) - (val < 0);
-};
+}
 
 
 ///<summary>

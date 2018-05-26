@@ -7,6 +7,11 @@ balans
 sekwencja jednego kroku
 nogi do tablicy i metody - umowa kolejnosc: FL FR RR RL
 czy po zmianie na .c wszytsko bedzie ok
+
+co to? bool Name() const{}  w parametrach
+co to auto ctor i explicit ctor
+
+
 przetesuj to extern:
 `o to t
 someFunction.cpp
