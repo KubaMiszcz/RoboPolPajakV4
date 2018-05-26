@@ -46,12 +46,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeIncludeSearchPath>.;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc\Legacy;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Device\ST\STM32F1xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Include;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0\arm-eabi\thumb\cortex_m3;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0\backward;d:\sysgcc\arm-eabi\lib\gcc\arm-eabi\7.2.0\include;d:\sysgcc\arm-eabi\lib\gcc\arm-eabi\7.2.0\include-fixed;d:\sysgcc\arm-eabi\arm-eabi\sys-include;d:\sysgcc\arm-eabi\arm-eabi\include;../../sg90arma6cvgdb3Cube/Inc;../../MyFirmware;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>.;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc\Legacy;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Device\ST\STM32F1xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Include;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0\arm-eabi\thumb\cortex_m3;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0\backward;d:\sysgcc\arm-eabi\lib\gcc\arm-eabi\7.2.0\include;d:\sysgcc\arm-eabi\lib\gcc\arm-eabi\7.2.0\include-fixed;d:\sysgcc\arm-eabi\arm-eabi\sys-include;d:\sysgcc\arm-eabi\arm-eabi\include;../../RobotPolpajakV4-CubeMX/Inc;../../MyFirmware;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
-    <NMakeOutput>$(ProjectDir)sg90arma6cvgdb3vgdb-Debug.vgdbsettings</NMakeOutput>
+    <NMakeOutput>$(ProjectDir)RobotPolpajakV4-VGDB-Debug.vgdbsettings</NMakeOutput>
     <IncludePath />
     <ReferencePath />
     <LibraryPath />
@@ -64,7 +64,7 @@
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
-    <NMakeOutput>$(ProjectDir)sg90arma6cvgdb3vgdb-Release.vgdbsettings</NMakeOutput>
+    <NMakeOutput>$(ProjectDir)RobotPolpajakV4-VGDB-Release.vgdbsettings</NMakeOutput>
     <IncludePath />
     <ReferencePath />
     <LibraryPath />
@@ -73,7 +73,7 @@
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
-    <NMakeOutput>$(ProjectDir)sg90arma6cvgdb3vgdb-DebugWithOptimizationO3.vgdbsettings</NMakeOutput>
+    <NMakeOutput>$(ProjectDir)RobotPolpajakV4-VGDB-DebugWithOptimizationO3.vgdbsettings</NMakeOutput>
     <NMakeIncludeSearchPath>.;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc\Legacy;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Device\ST\STM32F1xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Include;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0\arm-eabi\thumb\cortex_m3;d:\sysgcc\arm-eabi\arm-eabi\include\c++\7.2.0\backward;d:\sysgcc\arm-eabi\lib\gcc\arm-eabi\7.2.0\include;d:\sysgcc\arm-eabi\lib\gcc\arm-eabi\7.2.0\include-fixed;d:\sysgcc\arm-eabi\arm-eabi\sys-include;d:\sysgcc\arm-eabi\arm-eabi\include;../../sg90arma6cvgdb3Cube/Inc;../../MyFirmware;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_DebugWithOptimizationO3.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakePreprocessorDefinitions>__VisualGDB_CFG_DebugWithOptimizationO3;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
@@ -90,14 +90,14 @@
     <ClInclude Include="..\..\MyFirmware\RobotLeg.hpp" />
     <ClInclude Include="..\..\MyFirmware\Servo.hpp" />
     <ClInclude Include="..\..\MyFirmware\Vector3D.hpp" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\adc.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\dma.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\gpio.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\i2c.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\main.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\stm32f1xx_hal_conf.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\stm32f1xx_it.h" />
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\tim.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\adc.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\dma.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\gpio.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\i2c.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\main.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\stm32f1xx_hal_conf.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\stm32f1xx_it.h" />
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\tim.h" />
     <ClInclude Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Device\ST\STM32F1xx\Include\stm32f1xx.h" />
     <ClInclude Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Device\ST\STM32F1xx\Include\system_stm32f1xx.h" />
     <ClInclude Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Include\arm_common_tables.h" />
@@ -185,15 +185,15 @@
     <ClInclude Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_wwdg.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\adc.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\dma.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\gpio.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\i2c.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\main.cpp" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_hal_msp.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_it.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\system_stm32f1xx.c" />
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\tim.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\adc.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\dma.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\gpio.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\i2c.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\main.cpp" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\stm32f1xx_hal_msp.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\stm32f1xx_it.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\system_stm32f1xx.c" />
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\tim.c" />
     <ClCompile Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\StartupFiles\startup_stm32f103xb.c" />
     <ClCompile Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c" />
     <ClCompile Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c" />
@@ -259,8 +259,8 @@
     <None Include="debugwithoptimizationo3.mak" />
     <None Include="Makefile" />
     <None Include="release.mak" />
-    <None Include="sg90arma6cvgdb3vgdb-Debug.vgdbsettings" />
-    <None Include="sg90arma6cvgdb3vgdb-Release.vgdbsettings" />
+    <None Include="RobotPolpajakV4-VGDB-Debug.vgdbsettings" />
+    <None Include="RobotPolpajakV4-VGDB-Release.vgdbsettings" />
     <None Include="stm32.mak" />
   </ItemGroup>
   <ItemGroup>

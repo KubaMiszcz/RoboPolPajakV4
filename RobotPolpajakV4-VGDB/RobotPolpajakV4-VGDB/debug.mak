@@ -6,15 +6,15 @@ BINARYDIR := Debug
 
 #Additional flags
 PREPROCESSOR_MACROS := DEBUG=1
-INCLUDE_DIRS := ../../sg90arma6cvgdb3Cube/Inc ../../MyFirmware
+INCLUDE_DIRS := ../../RobotPolpajakV4-CubeMX/Inc ../../MyFirmware
 LIBRARY_DIRS := 
 LIBRARY_NAMES := 
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 
 
-CFLAGS := -ggdb -ffunction-sections -O3
-CXXFLAGS := -ggdb -ffunction-sections -fno-exceptions -fno-rtti -O3
+CFLAGS := -ggdb -ffunction-sections -O0
+CXXFLAGS := -ggdb -ffunction-sections -fno-exceptions -fno-rtti -O0
 ASFLAGS := 
 LDFLAGS := -Wl,-gc-sections -Wl,-q
 COMMONFLAGS := 

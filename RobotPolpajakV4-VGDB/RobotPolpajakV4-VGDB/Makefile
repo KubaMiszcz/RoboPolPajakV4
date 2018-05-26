@@ -5,7 +5,7 @@
 
 #VisualGDB: AutoSourceFiles		#<--- remove this line to disable auto-updating of SOURCEFILES and EXTERNAL_LIBS
 
-TARGETNAME := sg90arma6cvgdb3vgdb.elf
+TARGETNAME := RobotPolpajakV4-VGDB.elf
 #TARGETTYPE can be APP, STATIC or SHARED
 TARGETTYPE := APP
 
@@ -35,7 +35,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := ../../sg90arma6cvgdb3Cube/Src/adc.c ../../sg90arma6cvgdb3Cube/Src/dma.c ../../sg90arma6cvgdb3Cube/Src/gpio.c ../../sg90arma6cvgdb3Cube/Src/main.cpp ../../sg90arma6cvgdb3Cube/Src/stm32f1xx_hal_msp.c ../../sg90arma6cvgdb3Cube/Src/stm32f1xx_it.c ../../sg90arma6cvgdb3Cube/Src/system_stm32f1xx.c ../../sg90arma6cvgdb3Cube/Src/tim.c $(BSP_ROOT)/STM32F1xxxx/StartupFiles/startup_stm32f103xb.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cec.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_crc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_eth.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_hcd.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2s.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_irda.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_iwdg.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_mmc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_nand.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_nor.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pccard.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_smartcard.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sram.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_usart.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_wwdg.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_crc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_dac.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_dma.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_exti.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_fsmc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_i2c.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_pwr.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_sdmmc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_spi.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_tim.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.c
+SOURCEFILES := ../../RobotPolpajakV4-CubeMX/Src/adc.c ../../RobotPolpajakV4-CubeMX/Src/dma.c ../../RobotPolpajakV4-CubeMX/Src/gpio.c ../../RobotPolpajakV4-CubeMX/Src/i2c.c ../../RobotPolpajakV4-CubeMX/Src/main.cpp ../../RobotPolpajakV4-CubeMX/Src/stm32f1xx_hal_msp.c ../../RobotPolpajakV4-CubeMX/Src/stm32f1xx_it.c ../../RobotPolpajakV4-CubeMX/Src/system_stm32f1xx.c ../../RobotPolpajakV4-CubeMX/Src/tim.c $(BSP_ROOT)/STM32F1xxxx/StartupFiles/startup_stm32f103xb.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cec.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_crc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_eth.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_hcd.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2s.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_irda.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_iwdg.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_mmc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_nand.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_nor.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pccard.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_smartcard.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sram.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_usart.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_wwdg.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_adc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_crc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_dac.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_dma.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_exti.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_fsmc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_i2c.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_pwr.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_sdmmc.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_spi.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_tim.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usart.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.c $(BSP_ROOT)/STM32F1xxxx/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.c
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -181,35 +181,39 @@ $(BINARYDIR)/%.o : %.cxx $(all_make_files) |$(BINARYDIR)
 #VisualGDB: GeneratedRules				#<--- All lines below are auto-generated. Remove this line to suppress auto-generation of file rules.
 
 
-$(BINARYDIR)/adc.o : ../../sg90arma6cvgdb3Cube/Src/adc.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/adc.o : ../../RobotPolpajakV4-CubeMX/Src/adc.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/dma.o : ../../sg90arma6cvgdb3Cube/Src/dma.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/dma.o : ../../RobotPolpajakV4-CubeMX/Src/dma.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/gpio.o : ../../sg90arma6cvgdb3Cube/Src/gpio.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/gpio.o : ../../RobotPolpajakV4-CubeMX/Src/gpio.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/main.o : ../../sg90arma6cvgdb3Cube/Src/main.cpp $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/i2c.o : ../../RobotPolpajakV4-CubeMX/Src/i2c.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/main.o : ../../RobotPolpajakV4-CubeMX/Src/main.cpp $(all_make_files) |$(BINARYDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/stm32f1xx_hal_msp.o : ../../sg90arma6cvgdb3Cube/Src/stm32f1xx_hal_msp.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/stm32f1xx_hal_msp.o : ../../RobotPolpajakV4-CubeMX/Src/stm32f1xx_hal_msp.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/stm32f1xx_it.o : ../../sg90arma6cvgdb3Cube/Src/stm32f1xx_it.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/stm32f1xx_it.o : ../../RobotPolpajakV4-CubeMX/Src/stm32f1xx_it.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/system_stm32f1xx.o : ../../sg90arma6cvgdb3Cube/Src/system_stm32f1xx.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/system_stm32f1xx.o : ../../RobotPolpajakV4-CubeMX/Src/system_stm32f1xx.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/tim.o : ../../sg90arma6cvgdb3Cube/Src/tim.c $(all_make_files) |$(BINARYDIR)
+$(BINARYDIR)/tim.o : ../../RobotPolpajakV4-CubeMX/Src/tim.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

@@ -1378,7 +1378,7 @@
 //d:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/7.2.0/include-fixed
 //d:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/7.2.0/../../../../arm-eabi/sys-include
 //d:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/7.2.0/../../../../arm-eabi/include
-//../../sg90arma6cvgdb3Cube/Inc
+//../../RobotPolpajakV4-CubeMX/Inc
 //../../MyFirmware
 // --- Include directories end --- //
 

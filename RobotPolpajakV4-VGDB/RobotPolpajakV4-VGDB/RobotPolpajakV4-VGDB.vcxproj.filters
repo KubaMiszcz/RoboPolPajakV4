@@ -50,27 +50,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\adc.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\dma.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\gpio.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\main.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\stm32f1xx_hal_conf.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\stm32f1xx_it.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\tim.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h">
       <Filter>Header files\Device-specific files\HAL</Filter>
     </ClInclude>
@@ -350,35 +329,35 @@
     <ClInclude Include="..\..\MyFirmware\MyIncludes.hpp">
       <Filter>MyFirmware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\sg90arma6cvgdb3Cube\Inc\i2c.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\MyFirmware\MainLoop.hpp">
       <Filter>MyFirmware</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\adc.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\dma.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\gpio.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\i2c.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\main.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\stm32f1xx_hal_conf.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\stm32f1xx_it.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\RobotPolpajakV4-CubeMX\Inc\tim.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\adc.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\dma.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\gpio.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_hal_msp.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\stm32f1xx_it.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\system_stm32f1xx.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\tim.c">
-      <Filter>Source files\Src</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\StartupFiles\startup_stm32f103xb.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
@@ -556,10 +535,31 @@
     <ClCompile Include="C:\Users\KubaMiszcz\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_utils.c">
       <Filter>Source files\Device-specific files\HAL</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\i2c.c">
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\adc.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\sg90arma6cvgdb3Cube\Src\main.cpp">
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\dma.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\gpio.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\i2c.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\main.cpp">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\stm32f1xx_hal_msp.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\stm32f1xx_it.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\system_stm32f1xx.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\RobotPolpajakV4-CubeMX\Src\tim.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -568,13 +568,13 @@
     <None Include="debug.mak">
       <Filter>Make files</Filter>
     </None>
-    <None Include="sg90arma6cvgdb3vgdb-Debug.vgdbsettings">
+    <None Include="RobotPolpajakV4-VGDB-Debug.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
     <None Include="release.mak">
       <Filter>Make files</Filter>
     </None>
-    <None Include="sg90arma6cvgdb3vgdb-Release.vgdbsettings">
+    <None Include="RobotPolpajakV4-VGDB-Release.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
     <None Include="stm32.mak">
