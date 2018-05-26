@@ -16,11 +16,11 @@ public:
 	Vector3D CurrentFootPosition;
 
 private:
-	bool isMoving;
+	bool isMoving = false;
 	uint32_t Length1Square;
 	uint32_t Length2Square;
 	uint8_t movementStepsDivider = 1;
-	uint16_t stepsLeft;
+	uint16_t stepsLeft = 0;
 	Vector3D stepVector3D;
 
 	//debug only
@@ -29,7 +29,7 @@ private:
 public:
 	RobotLeg() {
 		//stepVector3D = Vector3D(0, 0, 0);
-	};
+	}
 
 	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEG], Servo servos[NUM_HINGES_IN_LEG]) {
 		LegOffsetVectorFromRobotOrigin = offsetFromRobotOrigin;
@@ -40,27 +40,27 @@ public:
 		}
 		Length1Square = powf(Length[1], 2);
 		Length2Square = powf(Length[2], 2);
-	};
+	}
 
-	bool IsMoving() {
+	bool IsMoving() const {
 		return isMoving;
 	}
 
-	bool IsInDestination() {
+	bool IsInDestination() const {
 		return !isMoving;
 	}
 
 	void MoveToPoint(float_t x, float_t y, float_t z) {
 		MoveToPoint(Vector3D(x, y, z));
-	};
+	}
 
 	void MoveToPoint(Vector3D dest) {
 		MoveByVector(dest.Subtract(CurrentFootPosition));
-	};
+	}
 
 	void MoveByVector(float_t x, float_t y, float_t z) {
 		MoveByVector(Vector3D(x, y, z));
-	};
+	}
 
 	void MoveByVector(Vector3D dest) {
 		// here is only movement data/properties, making it move is when MainLoop
@@ -69,7 +69,7 @@ public:
 		stepsLeft = movementSteps;
 		stepVector3D = Vector3D(dest.X / movementSteps, dest.Y / movementSteps, dest.Z / movementSteps);
 		isMoving = true;
-	};
+	}
 
 	void ContinueMove() {
 		SetPosition(CurrentFootPosition.Add(stepVector3D));
@@ -78,15 +78,15 @@ public:
 		{
 			isMoving = false;
 		}
-	};
+	}
 
 	void EmergencyStop() {
 		isMoving = false;
 	}
 
-	Vector3D GetFootPosition() {
+	Vector3D GetFootPosition() const {
 		return CurrentFootPosition;
-	};
+	}
 
 	void SetPosition(Vector3D destinationPoint) {
 		//! HERE IS INVERSE KINEMATIC
@@ -147,7 +147,7 @@ public:
 		}
 
 		CurrentFootPosition = destinationPoint;
-	};
+	}
 };
 
 /*
