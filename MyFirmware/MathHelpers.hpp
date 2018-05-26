@@ -1,28 +1,28 @@
+#pragma once
+//!+ORDER DEFINITIONS HERE IS IMPORTANT
+
 /*
  * MathHelpers.hpp
  *
  *  Created on: May 6, 2018
  *      Author: KubaMiszcz
  */
+ /**
+	* @brief  Sets .
+	*
+	* @note   This function uses.
+	*
+	* @param  G the GPIO peripheral
+	* @param  G written.
+	* @param  PinState: specifies the value to be written to the selected bit.
+	*          Thi
+	* @retval None
+	*/
 
-#pragma once
-/**
-   * @brief  Sets .
-   *
-   * @note   This function uses.
-   *
-   * @param  G the GPIO peripheral
-   * @param  G written.
-   * @param  PinState: specifies the value to be written to the selected bit.
-   *          Thi
-   * @retval None
-   */
-
-//!+ORDER DEFINITIONS HERE IS IMPORTANT
-///<summary>
-///map form one range to another, all data in float_t
-///@param x output
-///</summary>
+	///<summary>
+	///map form one range to another, all data in float_t
+	///@param x output
+	///</summary>
 static float_t mapToFloat_t(float_t x, float_t fromLow, float_t fromHigh, float_t toLow, float_t toHigh)
 {
 	return (x - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
@@ -31,6 +31,11 @@ static float_t mapToFloat_t(float_t x, float_t fromLow, float_t fromHigh, float_
 float_t ToDegrees(float_t rad) {
 	return rad * TO_DEGREES;
 };
+
+int8_t sgn(float_t val) {
+	return (val > 0) - (val < 0);
+};
+
 
 ///<summary>
 ///

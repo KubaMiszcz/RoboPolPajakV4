@@ -6,14 +6,14 @@
  */
 #pragma once
 
-enum class EnumStates {
-	IsInDestination, IsMoving
-};
-
-enum class MyEnumClass
-{
-	my1,my2
-};
+//enum class EnumStates {
+//	IsInDestination, IsMoving
+//};
+//
+//enum class MyEnumClass
+//{
+//	my1,my2
+//};
 
 //typedef enum {
 //	IsInDestination, IsMoving

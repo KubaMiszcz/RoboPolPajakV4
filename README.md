@@ -5,12 +5,30 @@ Todo:
 spowolnienie nogi
 balans
 sekwencja jednego kroku
-dodac metody przyjmujace dwa vectory zwracajace trzeci;
-
-
-
+nogi do tablicy i metody - umowa kolejnosc: FL FR RR RL
+czy po zmianie na .c wszytsko bedzie ok
+przetesuj to extern:
+`o to t
+someFunction.cpp
+void someFunction() {
+	int i = 0;
+	i = i + 1;
+}
+main.cpp
+#include "Arduino.h"
+extern void someFunction();
+void setup() {
+}
+void loop() {
+	someFunction();
+}
+`
 
 ##small fixes
+
+
+##in home
+usun zdublowane pliki cuba adc tim tip z myfirmware - to jest tylko do PIO
 
 
 

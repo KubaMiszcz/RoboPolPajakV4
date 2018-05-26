@@ -14,9 +14,9 @@ public:
 	uint16_t Length[NUM_HINGES_IN_LEG];
 	Servo Servos[NUM_HINGES_IN_LEG];
 	Vector3D CurrentFootPosition;
-	bool IsMoving;
 
 private:
+	bool isMoving;
 	uint32_t Length1Square;
 	uint32_t Length2Square;
 	uint8_t movementStepsDivider = 1;
@@ -42,6 +42,14 @@ public:
 		Length2Square = powf(Length[2], 2);
 	};
 
+	bool IsMoving() {
+		return isMoving;
+	}
+
+	bool IsInDestination() {
+		return !isMoving;
+	}
+
 	void MoveToPoint(float_t x, float_t y, float_t z) {
 		MoveToPoint(Vector3D(x, y, z));
 	};
@@ -55,11 +63,12 @@ public:
 	};
 
 	void MoveByVector(Vector3D dest) {
-		float_t movementSteps = dest.AbsMaxCoord() * movementStepsDivider;
+		// here is only movement data/properties, making it move is when MainLoop
+		// checks IsMoving() and calls ContinueMove
+		uint16_t movementSteps = (uint16_t)dest.AbsMaxCoord() * movementStepsDivider;
 		stepsLeft = movementSteps;
 		stepVector3D = Vector3D(dest.X / movementSteps, dest.Y / movementSteps, dest.Z / movementSteps);
-		IsMoving = true;
-		//TODO: add call continume move
+		isMoving = true;
 	};
 
 	void ContinueMove() {
@@ -67,9 +76,13 @@ public:
 		stepsLeft--;
 		if (stepsLeft <= 0)
 		{
-			IsMoving = false;
+			isMoving = false;
 		}
 	};
+
+	void EmergencyStop() {
+		isMoving = false;
+	}
 
 	Vector3D GetFootPosition() {
 		return CurrentFootPosition;

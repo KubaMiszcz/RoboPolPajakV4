@@ -1,10 +1,9 @@
 #pragma once
-class Vector3D
-{
-  public:
-	float_t X=0;
-	float_t Y=0;
-	float_t Z=0;
+class Vector3D {
+public:
+	float_t X = 0;
+	float_t Y = 0;
+	float_t Z = 0;
 
 	Vector3D() {};
 
@@ -12,15 +11,15 @@ class Vector3D
 		X = x; Y = y; Z = z;
 	};
 
-	Vector3D(const Vector3D &v) {//copy ctor
+	Vector3D(const Vector3D & v) {//copy ctor
 		X = v.X; Y = v.Y; Z = v.Z;
 	};
 
-	Vector3D operator+(Vector3D v) {
+	Vector3D operator+ (Vector3D v) {
 		return Vector3D(X + v.X, Y + v.Y, Z + v.Z);
 	}
 
-	Vector3D operator-(Vector3D v) {
+	Vector3D operator- (Vector3D v) {
 		return Vector3D(X - v.X, Y - v.Y, Z - v.Z);
 	}
 
@@ -33,7 +32,7 @@ class Vector3D
 	// 	return powf(X, 2) + powf(Y, 2) + powf(Z, 2);
 	// };
 
-	Vector3D Negate() { 
+	Vector3D Negate() {
 		X *= -1; Y *= -1; Z *= -1;
 		return *this;
 	};
@@ -66,7 +65,6 @@ class Vector3D
 	};
 
 	// void Normalize()
-	// Negate()
 
 	// float_t GetLengthXY()
 	// {

@@ -61,124 +61,53 @@ int MainLoop() {
 	while (1) {
 		tick = HAL_GetTick();
 
-		dest = rl.CurrentFootPosition.Add(Vector3D(-20, -20, 0));
-		if (!rl.IsMoving)
-			rl.MoveByVector(Vector3D(10, 10, 0));
-		else
-			rl.ContinueMove();
+		//Update status
+		if (FrontLeftLeg.IsMoving())
+			FrontLeftLeg.ContinueMove();
+		if (FrontRightLeg.IsMoving())
+			FrontRightLeg.ContinueMove();
+		if (FrontLeftLeg.IsMoving())
+			FrontLeftLeg.ContinueMove();
+		if (FrontLeftLeg.IsMoving())
+			FrontLeftLeg.ContinueMove();
 
-		////#################################
-		////OneStepForward sequence
-		////#################################
-		HAL_Delay(MyRobot.Delay);
 
-		float_t moveCG = 20;
-		float_t moveUp = 30;
-		float_t moveDown = -moveUp;
-		float_t moveForward = 30;
-		Vector3D moveCGVector;
-		//############################### START 1st FrontLeftLeg ###########################
-		//simultaneously move CG slighly oppose to moving leg -> right back
-		moveCGVector = Vector3D(moveCG, -moveCG, 0).Negate();
-		stage = 1;
 		switch (stage)
 		{
+		case 0:
+			stage = 1;
+			break;
 		case 1:
-			FrontLeftLeg.MoveByVector(moveCGVector);
-			FrontRightLeg.MoveByVector(moveCGVector);
-			RearRightLeg.MoveByVector(moveCGVector);
-			RearLeftLeg.MoveByVector(moveCGVector);
-			stage++;
+			stage += MyRobot.MoveOneLeg(FrontLeftLeg, Vector3D(0, 30, 0));
 			break;
 		case 2:
-			if (!MyRobot.IsMoving())
-				stage++;
+			stage += MyRobot.MoveOneLeg(FrontRightLeg, Vector3D(0, 30, 0));
 			break;
 		case 3:
-			//start lift up leg, move formawr, lift down
-			FrontLeftLeg.MoveByVector(0, 0, moveUp);
-			if (!FrontLeftLeg.IsMoving)
-				stage++;
 			break;
 		case 4:
-			FrontLeftLeg.MoveByVector(0, moveForward, 0);
-			if (!FrontLeftLeg.IsMoving)
-				stage++;
 			break;
 		case 5:
-			FrontLeftLeg.MoveByVector(0, 0, moveDown);
-			if (!FrontLeftLeg.IsMoving)
-				stage++;
 			break;
 		default:
 			break;
 		}
 
-		//Update status
-		if (FrontLeftLeg.IsMoving)
-			FrontLeftLeg.ContinueMove();
-		if (FrontRightLeg.IsMoving)
-			FrontRightLeg.ContinueMove();
-		if (FrontLeftLeg.IsMoving)
-			FrontLeftLeg.ContinueMove();
-		if (FrontLeftLeg.IsMoving)
-			FrontLeftLeg.ContinueMove();
 
-		//######################### END 1ST FrontLeftLeg ########################################
 
-		//######################## START 2nd FrontRightLeg ###################################
-		//move CG slighly oppose to moving leg -> left
-		moveCGVector = Vector3D(-moveCG, moveCG, 0).Add(-moveCG, -moveCG, 0).Negate();
-		FrontLeftLeg.MoveByVector(moveCGVector);
-		FrontRightLeg.MoveByVector(moveCGVector);
-		RearRightLeg.MoveByVector(moveCGVector);
-		RearLeftLeg.MoveByVector(moveCGVector);
-		//lift up leg, move formawr, lift down
-		FrontRightLeg.MoveByVector(0, 0, moveUp);
-		FrontRightLeg.MoveByVector(0, moveForward, 0);
-		FrontRightLeg.MoveByVector(0, 0, moveDown);
-		//######################### END 2nd FrontRightLeg ########################################
 
-		//######################## START 3nd RearRightLeg ###################################
-		//move CG slighly oppose to moving leg -> left
-		moveCGVector = Vector3D(moveCG, moveCG, 0).Add(-moveCG, moveCG, 0).Negate();
-		FrontLeftLeg.MoveByVector(moveCGVector);
-		FrontRightLeg.MoveByVector(moveCGVector);
-		RearRightLeg.MoveByVector(moveCGVector);
-		RearLeftLeg.MoveByVector(moveCGVector);
-		//lift up leg, move formawr, lift down
-		RearRightLeg.MoveByVector(0, 0, moveUp);
-		RearRightLeg.MoveByVector(0, moveForward, 0);
-		RearRightLeg.MoveByVector(0, 0, moveDown);
-		//######################### END 3nd RearRightLeg ########################################
 
-		//######################## START 4nd RearLeftLeg ###################################
-		//move CG slighly oppose to moving leg -> left
-		moveCGVector = Vector3D(moveCG, -moveCG, 0).Add(moveCG, moveCG, 0).Negate();
-		FrontLeftLeg.MoveByVector(moveCGVector);
-		FrontRightLeg.MoveByVector(moveCGVector);
-		RearRightLeg.MoveByVector(moveCGVector);
-		RearLeftLeg.MoveByVector(moveCGVector);
-		//lift up leg, move formawr, lift down
-		RearLeftLeg.MoveByVector(0, 0, moveUp);
-		RearLeftLeg.MoveByVector(0, moveForward, 0);
-		RearLeftLeg.MoveByVector(0, 0, moveDown);
-		//######################### END 4nd RearLeftLeg ########################################
 
-		// ##################### START Pose stand Up #########################
-		moveUp = 100;
-		moveDown = -moveUp;
-		moveCGVector = Vector3D(0, 0, moveUp).Negate();
-		FrontLeftLeg.MoveByVector(moveCGVector);
-		FrontRightLeg.MoveByVector(moveCGVector);
-		RearRightLeg.MoveByVector(moveCGVector);
-		RearLeftLeg.MoveByVector(moveCGVector);
-		// ##################### END Pose stand Up #########################
 
-		 //##################### START Pose lay down #########################
-		 //cos jka kroki tylko nogi wszerz ale musi tuptac i chyba ten srodek ciezkosci balansowac
-		 //jak dopracuej kroki to wteyd to
-		 //##################### END Pose lay down #########################
+
+
+
+
+		//dest = rl.CurrentFootPosition.Add(Vector3D(-20, -20, 0));
+		//if (!rl.IsMoving)
+		//	rl.MoveByVector(Vector3D(10, 10, 0));
+		//else
+		//	rl.ContinueMove();
 
 		//manual test inverse kinematic with potentiometers
 		dest.X = mapToFloat_t(potReadings[0], 0, ADC_RESOLUTION, minBoundaries.X, maxBoundaries.X);
