@@ -13,12 +13,14 @@ co to auto ctor i explicit ctor
 
 
 przetesuj to extern:
-`o to t
+```
 someFunction.cpp
 void someFunction() {
 	int i = 0;
 	i = i + 1;
 }
+``` 
+```
 main.cpp
 #include "Arduino.h"
 extern void someFunction();
@@ -27,7 +29,7 @@ void setup() {
 void loop() {
 	someFunction();
 }
-`
+```
 
 ##small fixes
 
