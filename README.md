@@ -1,7 +1,13 @@
 # RoboPolPajakV4
-## my engineering thesis - quadrapod
+Robot (quadropod) with API, walks on set route, assembly on set pose, implemented inversed kinematics
+* MCU: STM32F103C8T6, 12x SG90 Servo
+* Frimware: c/c++, cubeMX, newlib-nano, 
 
-Todo:
+# In future versions
+wifi control
+some sensors, odometry etc
+
+### Todo:
 spowolnienie nogi
 balans
 sekwencja jednego kroku
