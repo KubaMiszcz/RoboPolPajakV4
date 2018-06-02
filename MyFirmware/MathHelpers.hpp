@@ -32,7 +32,7 @@ static float_t ToDegrees(float_t rad) {
 	return rad * TO_DEGREES;
 }
 
-static int8_t sgn(float_t val) {
+static int8_t signum(float_t val) {
 	return (val > 0) - (val < 0);
 }
 

@@ -22,7 +22,7 @@ public:
 
 	Servo() {}
 
-	Servo(volatile uint32_t *ccr, uint16_t characteristicCCRs[5]) {
+	Servo(volatile uint32_t *ccr, const uint16_t characteristicCCRs[5]) {
 		ptrCCR = ccr;
 		degPos90CCR = characteristicCCRs[0];
 		degPos45CCR = characteristicCCRs[1];

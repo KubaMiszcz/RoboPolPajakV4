@@ -19,7 +19,7 @@ private:
 	bool isMoving = false;
 	uint32_t Length1Square;
 	uint32_t Length2Square;
-	uint8_t movementStepsDivider = 1;
+	uint8_t downTurnSpeed = 10;
 	uint16_t stepsLeft = 0;
 	Vector3D stepVector3D;
 
@@ -31,8 +31,9 @@ public:
 		//stepVector3D = Vector3D(0, 0, 0);
 	}
 
-	RobotLeg(Vector3D offsetFromRobotOrigin, uint16_t lengths[NUM_HINGES_IN_LEG], Servo servos[NUM_HINGES_IN_LEG]) {
+	RobotLeg(Vector3D offsetFromRobotOrigin, const uint16_t lengths[NUM_HINGES_IN_LEG], Servo servos[NUM_HINGES_IN_LEG], uint8_t downTurn = 10) {
 		LegOffsetVectorFromRobotOrigin = offsetFromRobotOrigin;
+		downTurnSpeed = downTurn;
 
 		for (size_t i = 0; i < NUM_HINGES_IN_LEG; i++) {
 			Length[i] = lengths[i];
@@ -62,12 +63,11 @@ public:
 		MoveByVector(Vector3D(x, y, z));
 	}
 
-	void MoveByVector(Vector3D dest) {
+	void MoveByVector(Vector3D vector) {
 		// here is only movement data/properties, making it move is when MainLoop
 		// checks IsMoving() and calls ContinueMove
-		uint16_t movementSteps = (uint16_t)dest.AbsMaxCoord() * movementStepsDivider;
-		stepsLeft = movementSteps;
-		stepVector3D = Vector3D(dest.X / movementSteps, dest.Y / movementSteps, dest.Z / movementSteps);
+		stepsLeft = (uint16_t)vector.AbsMaxCoord() * downTurnSpeed;
+		stepVector3D = Vector3D(vector.X / stepsLeft, vector.Y / stepsLeft, vector.Z / stepsLeft);
 		isMoving = true;
 	}
 

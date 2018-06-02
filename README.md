@@ -1,15 +1,33 @@
 # RoboPolPajakV4
 ## my engineering thesis - quadrapod
 
+TODO now
+popraw te ccr dla serw w init
+te funckje ismoving itp dla leg robot itd
+sekwencje zrob
+jakis timer na bazie systicka ale czestszy
+
+
+
 Todo:
+stany w swicth na enumach (nie enum class) i prefixy
+jakis blink do blinkania
+zacznij pisac doku
 spowolnienie nogi
 balans
 sekwencja jednego kroku
 nogi do tablicy i metody - umowa kolejnosc: FL FR RR RL
-czy po zmianie na .c wszytsko bedzie ok
+osobna zmienna ze robot wykonuje kroku
+enumy w swicthach
+doparacuj csy w switchu moveoneLeg
+nogi do tablicy albo osobno ale albo to albo to
+
+czy po zmianie na .c wszytsko bedzie ok? nie bedzie tzra pokombinwac dalej z extern itp
 
 co to? bool Name() const{}  w parametrach
 co to auto ctor i explicit ctor
+
+
 
 
 przetesuj to extern:
