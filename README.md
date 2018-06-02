@@ -1,5 +1,11 @@
 # RoboPolPajakV4
-## my engineering thesis - quadrapod
+Robot (quadropod) with API, walks on set route, assembly on set pose, implemented inversed kinematics
+* MCU: STM32F103C8T6, 12x SG90 Servo
+* Frimware: c/c++, cubeMX, newlib-nano, 
+
+# In future versions
+wifi control
+some sensors, odometry etc
 
 TODO now
 popraw te ccr dla serw w init
@@ -9,7 +15,7 @@ jakis timer na bazie systicka ale czestszy
 
 
 
-Todo:
+### Todo:
 stany w swicth na enumach (nie enum class) i prefixy
 jakis blink do blinkania
 zacznij pisac doku
@@ -26,8 +32,6 @@ czy po zmianie na .c wszytsko bedzie ok? nie bedzie tzra pokombinwac dalej z ext
 
 co to? bool Name() const{}  w parametrach
 co to auto ctor i explicit ctor
-
-
 
 
 przetesuj to extern:
