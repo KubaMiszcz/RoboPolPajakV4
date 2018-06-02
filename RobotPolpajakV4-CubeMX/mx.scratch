@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>D:\STM32_Workspace\sg90arma6cvgdb3\sg90arma6cvgdb3Cube\\sg90arma6cvgdb3Cube</ProjectName>
+<ProjectName>D:\STM32_Workspace\RobotPolpajakV4\RobotPolpajakV4-CubeMX\\RobotPolpajakV4_CubeMX</ProjectName>
 <ProjectNature>C</ProjectNature> 
 <CMSIS>C:\Users\KubaMiszcz\STM32Cube\Repository\STM32Cube_FW_F1_V1.6.1\Drivers\CMSIS</CMSIS>
 <HAL_Driver>C:\Users\KubaMiszcz\STM32Cube\Repository\STM32Cube_FW_F1_V1.6.1\Drivers\CMSIS</HAL_Driver>
@@ -22,7 +22,7 @@
 
 <configs>
   <config>
-    <name>sg90arma6cvgdb3Cube</name>				
+    <name>RobotPolpajakV4_CubeMX</name>				
     <device>STM32F103C8Tx</device>		 
     <heapSize>0x200</heapSize>
     <stackSize>0x400</stackSize>

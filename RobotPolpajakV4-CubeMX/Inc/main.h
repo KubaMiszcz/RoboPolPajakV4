@@ -49,6 +49,8 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define LED_BLINK_Pin GPIO_PIN_13
+#define LED_BLINK_GPIO_Port GPIOC
 #define pot1_Pin GPIO_PIN_0
 #define pot1_GPIO_Port GPIOA
 #define pot2_Pin GPIO_PIN_1
